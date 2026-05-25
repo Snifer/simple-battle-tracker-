@@ -1,10 +1,10 @@
 {
-  "id": "simple battle-tracker",
+  "id": "simple-battle-tracker",
   "name": "Simple Battle Tracker",
-  "version": "1.0.0",
-  "minAppVersion": "1.0.0",
-  "description": "Tracker de batalla genérico para juegos de rol. Lee propiedades YAML de tus notas de combatientes.",
-  "author": "Snifer (Bastión del Dinosaurio)",
+  "version": "1.0.1",
+  "minAppVersion": "0.15.0",
+  "description": "Generic battle tracker for role-playing games. Reads YAML properties from your combatant notes.",
+  "author": "Snifer (Bastion del Dinosaurio)",
   "authorUrl": "https://www.youtube.com/@BastiondelDinosaurio",
   "fundingUrl": "https://ko-fi.com/bastiondeldino",
   "isDesktopOnly": false
