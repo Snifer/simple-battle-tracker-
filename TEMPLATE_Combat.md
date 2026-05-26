@@ -1,8 +1,8 @@
 ---
 # ──────────────────────────────────────────
-#  COMBATANT TEMPLATE — Battle Tracker
+#  COMBATANT TEMPLATE — Combat Ledger
 #  Copy this file for each character or creature.
-#  Field names are configurable in Settings → Battle Tracker.
+#  Field names are configurable in Settings → Combat Ledger.
 # ──────────────────────────────────────────
 
 # "type" field → PC | Enemy | NPC

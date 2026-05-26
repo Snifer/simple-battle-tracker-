@@ -1,7 +1,7 @@
 {
-  "name": "simple-battle-tracker",
-  "version": "1.0.2",
-  "description": "Simple battle tracker for role-playing games. Reads YAML properties from your combatant notes.",
+  "name": "combat-ledger",
+  "version": "1.0.3",
+  "description": "Combat ledger and battle tracker for role-playing games. Reads YAML properties from your combatant notes.",
   "main": "main.js",
   "scripts": {
     "dev": "node esbuild.config.mjs",

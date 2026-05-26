@@ -1,9 +1,9 @@
 {
-  "id": "simple-battle-tracker",
-  "name": "Simple Battle Tracker",
-  "version": "1.0.2",
+  "id": "combat-ledger",
+  "name": "Combat Ledger",
+  "version": "1.0.3",
   "minAppVersion": "0.15.0",
-  "description": "Simple battle tracker for role-playing games. Reads YAML properties from your combatant notes.",
+  "description": "Combat ledger and battle tracker for role-playing games. Reads YAML properties from your combatant notes.",
   "author": "Snifer (Bastion del Dinosaurio)",
   "authorUrl": "https://www.youtube.com/@BastiondelDinosaurio",
   "fundingUrl": "https://ko-fi.com/bastiondeldino",

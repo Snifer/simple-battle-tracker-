@@ -29,8 +29,8 @@ var init_localization = __esm({
   "src/localization.ts"() {
     LOCALIZATION = {
       es: {
-        viewTitle: "Battle Tracker",
-        openCommand: "Abrir Battle Tracker",
+        viewTitle: "Combat Ledger",
+        openCommand: "Abrir Combat Ledger",
         round: "Ronda",
         nextTurn: "\u25B6 Siguiente turno",
         load: "\uFF0B Cargar",
@@ -61,7 +61,7 @@ var init_localization = __esm({
         pickModalCancel: "Cancelar",
         pickModalSelectMin: "Selecciona al menos una nota.",
         // Settings
-        settingsTitle: "Battle Tracker \u2014 Configuraci\xF3n",
+        settingsTitle: "Combat Ledger \u2014 Configuraci\xF3n",
         settingsLanguageName: "Idioma / Language",
         settingsLanguageDesc: "Selecciona el idioma de la interfaz (Select the interface language)",
         settingsFieldsTitle: "Campos de combatiente",
@@ -119,8 +119,8 @@ var init_localization = __esm({
         logButtonNoLog: "No registrar"
       },
       en: {
-        viewTitle: "Battle Tracker",
-        openCommand: "Open Battle Tracker",
+        viewTitle: "Combat Ledger",
+        openCommand: "Open Combat Ledger",
         round: "Round",
         nextTurn: "\u25B6 Next turn",
         load: "\uFF0B Load",
@@ -151,7 +151,7 @@ var init_localization = __esm({
         pickModalCancel: "Cancel",
         pickModalSelectMin: "Select at least one note.",
         // Settings
-        settingsTitle: "Battle Tracker \u2014 Settings",
+        settingsTitle: "Combat Ledger \u2014 Settings",
         settingsLanguageName: "Idioma / Language",
         settingsLanguageDesc: "Selecciona el idioma de la interfaz (Select the interface language)",
         settingsFieldsTitle: "Combatant Fields",
@@ -489,7 +489,7 @@ init_localization();
 var import_obsidian2 = require("obsidian");
 init_localization();
 init_modals();
-var VIEW_TYPE = "battle-tracker-view";
+var VIEW_TYPE = "combat-ledger-view";
 var BattleTrackerView = class extends import_obsidian2.ItemView {
   constructor(leaf, plugin) {
     super(leaf);
@@ -507,7 +507,7 @@ var BattleTrackerView = class extends import_obsidian2.ItemView {
     return VIEW_TYPE;
   }
   getDisplayText() {
-    return "Battle Tracker";
+    return "Combat Ledger";
   }
   getIcon() {
     return "sword";
@@ -1203,10 +1203,10 @@ var BattleTrackerPlugin = class extends import_obsidian4.Plugin {
       delete registry.viewByType[VIEW_TYPE];
     }
     this.registerView(VIEW_TYPE, (leaf) => new BattleTrackerView(leaf, this));
-    this.addRibbonIcon("sword", "Battle Tracker", () => this.activateView());
+    this.addRibbonIcon("sword", "Combat Ledger", () => this.activateView());
     this.addCommand({
-      id: "open-battle-tracker",
-      name: this.settings.language === "es" ? "Abrir Battle Tracker" : "Open Battle Tracker",
+      id: "open-combat-ledger",
+      name: this.settings.language === "es" ? "Abrir Combat Ledger" : "Open Combat Ledger",
       callback: () => this.activateView()
     });
     this.addSettingTab(new BattleTrackerSettingTab(this.app, this));

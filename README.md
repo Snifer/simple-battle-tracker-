@@ -1,11 +1,11 @@
-# Simple Battle Tracker
+# Combat Ledger
 
 [![Obsidian](https://img.shields.io/badge/Obsidian-Plugin-7C3AED?logo=obsidian)](https://obsidian.md/plugins)
-[![version](https://img.shields.io/badge/version-1.0.2-blue.svg)](https://github.com/Snifer/simple-battle-tracker/releases)
+[![version](https://img.shields.io/badge/version-1.0.3-blue.svg)](https://github.com/Snifer/combat-ledger/releases)
 [![license](https://img.shields.io/badge/license-0--MIT-green.svg)](LICENSE)
-![GitHub Downloads](https://img.shields.io/github/downloads/Snifer/simple-battle-tracker/total?logo)
+![GitHub Downloads](https://img.shields.io/github/downloads/Snifer/combat-ledger/total?logo)
 [![Ko-fi](https://img.shields.io/badge/Ko--fi-Buy%20me%20a%20coffee-ff5f5f?logo=ko-fi&logoColor=white)](https://ko-fi.com/bastiondeldino)
-![Simple Battle Tracker ](./assets/simpletracker.png)
+![Combat Ledger ](./assets/simpletracker.png)
 
 > 📖 **Para la versión en Castellano/Español, lee [README-es.md](README-es.md).**
 
@@ -14,7 +14,7 @@ A simple and lightweight battle tracker for tabletop RPGs (such as D&D, Pathfind
 ---
 
 ## Why this plugin?
-This plugin was born out of a personal need: **I wanted a simple, lightweight way to track initiative and health in my RPG sessions without overcomplicating things.** I didn't want heavy systems or cluttered panels. I just wanted something that reads my notes, lets me manage combat turns, and logs the actions. That's how **Simple Battle Tracker** was born.
+This plugin was born out of a personal need: **I wanted a simple, lightweight way to track initiative and health in my RPG sessions without overcomplicating things.** I didn't want heavy systems or cluttered panels. I just wanted something that reads my notes, lets me manage combat turns, and logs the actions. That's how **Combat Ledger** was born.
 
 ---
 
@@ -33,8 +33,8 @@ This plugin was born out of a personal need: **I wanted a simple, lightweight wa
 
 ## Installation
 
-1. Copy the plugin files (`main.js`, `manifest.json`, and `styles.css`) into your Obsidian vault's plugin directory: `<vault>/.obsidian/plugins/simple-battle-tracker/`.
-2. Open Obsidian settings, navigate to **Community Plugins**, and enable **Simple Battle Tracker**.
+1. Copy the plugin files (`main.js`, `manifest.json`, and `styles.css`) into your Obsidian vault's plugin directory: `<vault>/.obsidian/plugins/combat-ledger/`.
+2. Open Obsidian settings, navigate to **Community Plugins**, and enable **Combat Ledger**.
 
 ---
 
@@ -56,7 +56,7 @@ stamina: 3          # Extra field
 ```
 
 ### 2. Loading Combatants
-* Open the Battle Tracker sidebar view by clicking the **Sword Ribbon Icon** on the left ribbon, or run the command `Open Battle Tracker`.
+* Open the Combat Ledger sidebar view by clicking the **Sword Ribbon Icon** on the left ribbon, or run the command `Open Combat Ledger`.
 * Click **＋ Load** in the top bar.
   * If a **Combatant Folder** is defined in your settings, it will automatically load all files inside that folder.
   * If the path is empty, a modal will open allowing you to search and select one or multiple notes manually.

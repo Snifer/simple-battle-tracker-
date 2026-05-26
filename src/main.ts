@@ -16,11 +16,11 @@ export default class BattleTrackerPlugin extends Plugin {
 
 		this.registerView(VIEW_TYPE, (leaf) => new BattleTrackerView(leaf, this));
 
-		this.addRibbonIcon("sword", "Battle Tracker", () => this.activateView());
+		this.addRibbonIcon("sword", "Combat Ledger", () => this.activateView());
 
 		this.addCommand({
-			id: "open-battle-tracker",
-			name: this.settings.language === "es" ? "Abrir Battle Tracker" : "Open Battle Tracker",
+			id: "open-combat-ledger",
+			name: this.settings.language === "es" ? "Abrir Combat Ledger" : "Open Combat Ledger",
 			callback: () => this.activateView(),
 		});
 

@@ -1,7 +1,7 @@
 export const LOCALIZATION = {
 	es: {
-		viewTitle: "Battle Tracker",
-		openCommand: "Abrir Battle Tracker",
+		viewTitle: "Combat Ledger",
+		openCommand: "Abrir Combat Ledger",
 		round: "Ronda",
 		nextTurn: "▶ Siguiente turno",
 		load: "＋ Cargar",
@@ -33,7 +33,7 @@ export const LOCALIZATION = {
 		pickModalSelectMin: "Selecciona al menos una nota.",
 		
 		// Settings
-		settingsTitle: "Battle Tracker — Configuración",
+		settingsTitle: "Combat Ledger — Configuración",
 		settingsLanguageName: "Idioma / Language",
 		settingsLanguageDesc: "Selecciona el idioma de la interfaz (Select the interface language)",
 		settingsFieldsTitle: "Campos de combatiente",
@@ -92,8 +92,8 @@ export const LOCALIZATION = {
 		logButtonNoLog: "No registrar",
 	},
 	en: {
-		viewTitle: "Battle Tracker",
-		openCommand: "Open Battle Tracker",
+		viewTitle: "Combat Ledger",
+		openCommand: "Open Combat Ledger",
 		round: "Round",
 		nextTurn: "▶ Next turn",
 		load: "＋ Load",
@@ -125,7 +125,7 @@ export const LOCALIZATION = {
 		pickModalSelectMin: "Select at least one note.",
 		
 		// Settings
-		settingsTitle: "Battle Tracker — Settings",
+		settingsTitle: "Combat Ledger — Settings",
 		settingsLanguageName: "Idioma / Language",
 		settingsLanguageDesc: "Selecciona el idioma de la interfaz (Select the interface language)",
 		settingsFieldsTitle: "Combatant Fields",

@@ -4,7 +4,7 @@ import { Combatant } from "./types";
 import { LOCALIZATION } from "./localization";
 import { DmgModal, ConditionModal, NoteModal, PickCombatantsModal } from "./modals";
 
-export const VIEW_TYPE = "battle-tracker-view";
+export const VIEW_TYPE = "combat-ledger-view";
 
 export class BattleTrackerView extends ItemView {
 	plugin: BattleTrackerPlugin;
@@ -24,7 +24,7 @@ export class BattleTrackerView extends ItemView {
 	}
 
 	getViewType() { return VIEW_TYPE; }
-	getDisplayText() { return "Battle Tracker"; }
+	getDisplayText() { return "Combat Ledger"; }
 	getIcon() { return "sword"; }
 
 	async onOpen() {

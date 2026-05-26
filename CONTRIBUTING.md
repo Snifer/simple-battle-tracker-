@@ -1,4 +1,4 @@
-# Contributing to Simple Battle Tracker
+# Contributing to Combat Ledger
 
 Thanks for taking the time to contribute! 🎲
 
@@ -10,8 +10,8 @@ Thanks for taking the time to contribute! 🎲
 
 ### Setup
 ```bash
-git clone https://github.com/snifer/simple-battle-tracker
-cd simple-battle-tracker
+git clone https://github.com/snifer/combat-ledger
+cd combat-ledger
 npm install
 ```
 
@@ -24,7 +24,7 @@ npm run dev
 
 Copy or symlink the plugin folder into your test vault:
 ```bash
-ln -s $(pwd) /path/to/your/vault/.obsidian/plugins/simple-battle-tracker
+ln -s $(pwd) /path/to/your/vault/.obsidian/plugins/combat-ledger
 ```
 
 Then enable the plugin in Obsidian. Every time the dev server rebuilds, reload Obsidian with `Ctrl+R` or the `Reload app without saving` command.

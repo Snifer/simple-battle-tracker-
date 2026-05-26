@@ -1,8 +1,8 @@
 ---
 # ──────────────────────────────────────────
-#  PLANTILLA DE COMBATIENTE — Battle Tracker
+#  PLANTILLA DE COMBATIENTE — Combat Ledger
 #  Copia este archivo para cada personaje o criatura.
-#  Los nombres de campo son configurables en Ajustes > Battle Tracker.
+#  Los nombres de campo son configurables en Ajustes > Combat Ledger.
 # ──────────────────────────────────────────
 
 # Campo "tipo" → PC | Enemy | NPC

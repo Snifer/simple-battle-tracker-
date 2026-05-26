@@ -65,3 +65,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
     * Settings section (condition color management).
   * Streamlined codebase by cleaning up style-related code in `view.ts` and `settings.ts`.
 
+## [1.0.3] - 2026-05-26
+
+### Added
+- Rename plug-in from Simple Battle Tracker to Combat Ledger.
+- Update all the files with the new name.
