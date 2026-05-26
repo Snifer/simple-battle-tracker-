@@ -67,6 +67,19 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [1.0.3] - 2026-05-26
 
-### Added
+### Changed
 - Rename plug-in from Simple Battle Tracker to Combat Ledger.
 - Update all the files with the new name.
+
+
+## [1.0.4] - 2026-05-26
+
+### Changed
+- Replaced deprecated `builtin-modules` dependency with the native Node.js `builtinModules` API.
+- Updated the release workflow to generate GitHub artifact attestations for release assets.
+
+### Fixed
+- Updated the plugin description to comply with Obsidian community review guidelines.
+
+### Security
+- Release assets now include provenance attestations for cryptographic verification.

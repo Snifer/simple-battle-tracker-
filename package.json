@@ -1,18 +1,17 @@
 {
   "name": "combat-ledger",
-  "version": "1.0.3",
-  "description": "Combat ledger and battle tracker for role-playing games. Reads YAML properties from your combatant notes.",
+  "version": "1.0.4",
+  "description": "Track combat encounters and manage initiative for your tabletop RPG sessions using YAML properties from combatant notes.",
   "main": "main.js",
   "scripts": {
     "dev": "node esbuild.config.mjs",
     "build": "tsc --noEmit --skipLibCheck && node esbuild.config.mjs production"
   },
   "keywords": [],
-  "author": "",
+  "author": "Snifer (Bastion del Dinosaurio)",
   "license": "MIT",
   "devDependencies": {
     "@types/node": "^16.11.6",
-    "builtin-modules": "3.3.0",
     "esbuild": "0.17.3",
     "obsidian": "latest",
     "tslib": "2.4.0",
