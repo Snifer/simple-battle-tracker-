@@ -36,6 +36,19 @@ jobs:
             manifest.json
             styles.css
 
+      - name: Extract release notes for current tag
+        run: |
+          tag="${GITHUB_REF#refs/tags/}"
+          version="${tag#v}"
+
+          awk -v version="$version" '
+            $0 ~ "^## \\[" version "\\]" { capture=1 }
+            capture && $0 ~ "^## \\[[^]]+\\]" && $0 !~ "^## \\[" version "\\]" { exit }
+            capture { print }
+          ' CHANGELOG.md > RELEASE_NOTES.md
+
+          test -s RELEASE_NOTES.md || { echo "No release notes found for version $version in CHANGELOG.md"; exit 1; }
+
       - name: Create release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -43,5 +56,5 @@ jobs:
           tag="${GITHUB_REF#refs/tags/}"
           gh release create "$tag" \
             --title "$tag" \
-            --notes-file CHANGELOG.md \
+            --notes-file RELEASE_NOTES.md \
             main.js manifest.json styles.css

@@ -40,21 +40,33 @@ var init_localization = __esm({
         init: "Init",
         ac: "CA",
         hp: "PV",
+        shield: "Escudo",
         damageHeal: "\u2694 Da\xF1o / Curar",
         status: "\u25C8 Estado",
         note: "\u270E Nota",
+        action: "\u26A1 Acci\xF3n",
         defeat: "Derrotar",
         revive: "Revivir",
+        editInitiative: "Editar iniciativa",
         removeTitle: "Quitar del combate",
         dmgModalTitle: "Da\xF1o / Curaci\xF3n",
         dmgModalQty: "Cantidad",
         dmgModalHeal: "\u2665 Curar",
         dmgModalDmg: "\u2694 Da\xF1o",
+        dmgModalUseShield: "Absorber da\xF1o con escudo",
+        dmgModalNoShield: "Sin escudo disponible",
         condModalTitle: "Condiciones",
         condModalApply: "Aplicar",
+        condModalDurationPlaceholder: "Duraci\xF3n en rondas",
         noteModalTitle: "Nota r\xE1pida",
         noteModalPlaceholder: "Anota algo sobre este combatiente...",
         noteModalSave: "Guardar",
+        actionModalTitle: "Acci\xF3n",
+        actionModalDamagePlaceholder: "Da\xF1o a aplicar",
+        actionModalShieldLabel: "Permitir que el escudo absorba da\xF1o",
+        actionModalNoCondition: "Sin condici\xF3n",
+        actionModalNotePlaceholder: "Efecto o nota contextual",
+        actionModalApply: "Aplicar acci\xF3n",
         pickModalTitle: "Selecciona combatientes",
         pickModalSearch: "Buscar nota...",
         pickModalLoad: "Cargar al combate",
@@ -72,12 +84,25 @@ var init_localization = __esm({
         settingsHpDesc: "Propiedad para puntos de vida actuales (se usa tambi\xE9n como m\xE1ximo si no hay hp_max)",
         settingsHpMaxName: "PV m\xE1ximos",
         settingsHpMaxDesc: "Propiedad para puntos de vida m\xE1ximos",
+        settingsShieldName: "Escudo",
+        settingsShieldDesc: "Propiedad para el valor de escudo o puntos temporales. D\xE9jalo vac\xEDo si no usas escudo.",
         settingsAcName: "Clase de Armadura / Defensa",
         settingsAcDesc: "Propiedad para CA o defensa",
         settingsTypeName: "Tipo",
         settingsTypeDesc: 'Propiedad para el tipo: "PC", "Enemy" o "NPC"',
         settingsExtraName: "Campos extra",
         settingsExtraDesc: "Propiedades num\xE9ricas adicionales separadas por comas (ej. mp,stamina,stress)",
+        settingsConditionsFieldName: "Campo de condiciones",
+        settingsConditionsFieldDesc: "Propiedad YAML donde se sincronizan las condiciones activas.",
+        settingsRealtimeTitle: "Sincronizaci\xF3n y da\xF1o",
+        settingsRealtimeSyncName: "Sincronizaci\xF3n en tiempo real",
+        settingsRealtimeSyncDesc: "Actualiza autom\xE1ticamente la nota original al cambiar PV, iniciativa, condiciones, escudo o extras.",
+        settingsRealtimeModeName: "Sincronizar a",
+        settingsRealtimeModeDesc: "Limita la sincronizaci\xF3n a personajes jugadores o apl\xEDcala a todos los combatientes.",
+        settingsRealtimeModePc: "Solo PC",
+        settingsRealtimeModeAll: "PC y NPC/Enemigos",
+        settingsShieldAbsorbName: "El escudo absorbe da\xF1o",
+        settingsShieldAbsorbDesc: "Cuando est\xE9 activo, el da\xF1o se resta primero del escudo antes de afectar los PV.",
         settingsCondTitle: "Condiciones / Estados",
         settingsCondColorDesc: "Personaliza el nombre y color de cada estado. El color se aplica al badge en la vista de combate.",
         settingsCondAddBtn: "\uFF0B A\xF1adir condici\xF3n",
@@ -130,21 +155,33 @@ var init_localization = __esm({
         init: "Init",
         ac: "AC",
         hp: "HP",
+        shield: "Shield",
         damageHeal: "\u2694 Damage / Heal",
         status: "\u25C8 Status",
         note: "\u270E Note",
+        action: "\u26A1 Action",
         defeat: "Defeat",
         revive: "Revive",
+        editInitiative: "Edit initiative",
         removeTitle: "Remove from battle",
         dmgModalTitle: "Damage / Healing",
         dmgModalQty: "Amount",
         dmgModalHeal: "\u2665 Heal",
         dmgModalDmg: "\u2694 Damage",
+        dmgModalUseShield: "Let shield absorb damage",
+        dmgModalNoShield: "No shield available",
         condModalTitle: "Conditions",
         condModalApply: "Apply",
+        condModalDurationPlaceholder: "Duration in rounds",
         noteModalTitle: "Quick note",
         noteModalPlaceholder: "Write something about this combatant...",
         noteModalSave: "Save",
+        actionModalTitle: "Action",
+        actionModalDamagePlaceholder: "Damage to apply",
+        actionModalShieldLabel: "Allow shield to absorb damage",
+        actionModalNoCondition: "No condition",
+        actionModalNotePlaceholder: "Effect or contextual note",
+        actionModalApply: "Apply action",
         pickModalTitle: "Select combatants",
         pickModalSearch: "Search note...",
         pickModalLoad: "Load to battle",
@@ -162,12 +199,25 @@ var init_localization = __esm({
         settingsHpDesc: "Property for current hit points (also used as max if hp_max is missing)",
         settingsHpMaxName: "Max HP",
         settingsHpMaxDesc: "Property for maximum hit points",
+        settingsShieldName: "Shield",
+        settingsShieldDesc: "Property for shield or temporary hit points. Leave empty if unused.",
         settingsAcName: "Armor Class / Defense",
         settingsAcDesc: "Property for AC or defense",
         settingsTypeName: "Type",
         settingsTypeDesc: 'Property for type: "PC", "Enemy" or "NPC"',
         settingsExtraName: "Extra fields",
         settingsExtraDesc: "Additional numeric properties separated by commas (e.g. mp,stamina,stress)",
+        settingsConditionsFieldName: "Conditions field",
+        settingsConditionsFieldDesc: "YAML property where active conditions are synchronized.",
+        settingsRealtimeTitle: "Sync and damage",
+        settingsRealtimeSyncName: "Real-time sync",
+        settingsRealtimeSyncDesc: "Automatically updates the original note when HP, initiative, conditions, shield, or extras change.",
+        settingsRealtimeModeName: "Sync targets",
+        settingsRealtimeModeDesc: "Limit synchronization to player characters or apply it to all combatants.",
+        settingsRealtimeModePc: "PC only",
+        settingsRealtimeModeAll: "PC and NPC/Enemies",
+        settingsShieldAbsorbName: "Shield absorbs damage",
+        settingsShieldAbsorbDesc: "When enabled, damage is removed from shield before it affects HP.",
         settingsCondTitle: "Conditions / States",
         settingsCondColorDesc: "Customize the name and color of each status. The color is applied to the badge in the combat view.",
         settingsCondAddBtn: "\uFF0B Add condition",
@@ -215,22 +265,24 @@ var init_localization = __esm({
 // src/modals.ts
 var modals_exports = {};
 __export(modals_exports, {
+  ActionModal: () => ActionModal,
   ConditionModal: () => ConditionModal,
   DmgModal: () => DmgModal,
   LogSetupModal: () => LogSetupModal,
   NoteModal: () => NoteModal,
   PickCombatantsModal: () => PickCombatantsModal
 });
-var import_obsidian, DmgModal, ConditionModal, NoteModal, PickCombatantsModal, LogSetupModal;
+var import_obsidian, DmgModal, ConditionModal, NoteModal, ActionModal, PickCombatantsModal, LogSetupModal;
 var init_modals = __esm({
   "src/modals.ts"() {
     import_obsidian = require("obsidian");
     init_localization();
     DmgModal = class extends import_obsidian.Modal {
-      constructor(app, name, plugin, onConfirm) {
+      constructor(app, name, plugin, hasShield, onConfirm) {
         super(app);
         this.name = name;
         this.plugin = plugin;
+        this.hasShield = hasShield;
         this.onConfirm = onConfirm;
       }
       onOpen() {
@@ -241,15 +293,22 @@ var init_modals = __esm({
         const wrap = contentEl.createDiv("bt-modal-content");
         const input = wrap.createEl("input", { type: "number", placeholder: t.dmgModalQty });
         input.min = "0";
+        const shieldRow = wrap.createDiv("bt-modal-checkbox-row");
+        const shieldToggle = shieldRow.createEl("input", { type: "checkbox" });
+        shieldToggle.checked = this.plugin.settings.shieldAbsorbsDamage;
+        shieldToggle.disabled = !this.hasShield;
+        shieldRow.createEl("label", {
+          text: this.hasShield ? t.dmgModalUseShield : t.dmgModalNoShield
+        });
         const row = wrap.createDiv("bt-modal-actions");
         const healBtn = row.createEl("button", { cls: "bt-btn", text: t.dmgModalHeal });
         healBtn.onclick = () => {
-          this.onConfirm(parseInt(input.value) || 0, true);
+          this.onConfirm(parseInt(input.value) || 0, true, false);
           this.close();
         };
         const dmgBtn = row.createEl("button", { cls: "bt-btn bt-btn-danger-soft", text: t.dmgModalDmg });
         dmgBtn.onclick = () => {
-          this.onConfirm(parseInt(input.value) || 0, false);
+          this.onConfirm(parseInt(input.value) || 0, false, this.hasShield && shieldToggle.checked);
           this.close();
         };
         setTimeout(() => input.focus(), 50);
@@ -262,7 +321,7 @@ var init_modals = __esm({
       constructor(app, all, current, plugin, onConfirm) {
         super(app);
         this.allConditions = all;
-        this.current = [...current];
+        this.current = current.map((entry) => ({ ...entry }));
         this.plugin = plugin;
         this.onConfirm = onConfirm;
       }
@@ -271,41 +330,65 @@ var init_modals = __esm({
         const lang = this.plugin.settings.language;
         const t = LOCALIZATION[lang];
         contentEl.createEl("h3", { text: t.condModalTitle });
-        const grid = contentEl.createDiv("bt-cond-grid");
+        const grid = contentEl.createDiv("bt-cond-edit-grid");
+        const selected = new Map(this.current.map((entry) => [entry.name, entry.duration]));
         this.allConditions.forEach((entry) => {
-          const isSelected = this.current.includes(entry.name);
-          const btn = grid.createEl("button", {
-            cls: `bt-cond-toggle${isSelected ? " selected" : ""}`,
+          const row2 = grid.createDiv("bt-cond-edit-row");
+          const left = row2.createDiv("bt-cond-edit-main");
+          const check = left.createEl("input", { type: "checkbox" });
+          check.checked = selected.has(entry.name);
+          const btn = left.createEl("button", {
+            cls: `bt-cond-toggle${check.checked ? " selected" : ""}`,
             text: entry.name
           });
-          const applyColor = (selected) => {
+          const durationInput = row2.createEl("input", {
+            cls: "bt-cond-duration-input",
+            type: "number",
+            placeholder: t.condModalDurationPlaceholder
+          });
+          durationInput.min = "1";
+          const currentDuration = selected.get(entry.name);
+          durationInput.value = currentDuration ? String(currentDuration) : "";
+          durationInput.disabled = !check.checked;
+          if (entry.color) {
+            btn.style.color = check.checked ? "#fff" : entry.color;
+            btn.style.borderColor = entry.color;
+            btn.style.backgroundColor = check.checked ? entry.color : entry.color + "22";
+          }
+          const updateVisual = () => {
+            btn.classList.toggle("selected", check.checked);
+            durationInput.disabled = !check.checked;
+            if (!check.checked)
+              durationInput.value = "";
             if (entry.color) {
-              if (selected) {
-                btn.style.backgroundColor = entry.color;
-                btn.style.borderColor = entry.color;
-                btn.style.color = "#fff";
-              } else {
-                btn.style.color = entry.color;
-                btn.style.borderColor = entry.color;
-                btn.style.backgroundColor = entry.color + "22";
-              }
+              btn.style.color = check.checked ? "#fff" : entry.color;
+              btn.style.backgroundColor = check.checked ? entry.color : entry.color + "22";
             }
           };
-          applyColor(isSelected);
           btn.onclick = () => {
-            const idx = this.current.indexOf(entry.name);
-            if (idx >= 0)
-              this.current.splice(idx, 1);
-            else
-              this.current.push(entry.name);
-            btn.classList.toggle("selected");
-            applyColor(btn.classList.contains("selected"));
+            check.checked = !check.checked;
+            updateVisual();
           };
+          check.onchange = updateVisual;
         });
         const row = contentEl.createDiv("bt-modal-actions");
         const ok = row.createEl("button", { cls: "bt-btn bt-btn-primary", text: t.condModalApply });
         ok.onclick = () => {
-          this.onConfirm(this.current);
+          const updated = [];
+          const rows = Array.from(grid.querySelectorAll(".bt-cond-edit-row"));
+          rows.forEach((rowEl, idx) => {
+            const check = rowEl.querySelector("input[type='checkbox']");
+            const durationInput = rowEl.querySelector(".bt-cond-duration-input");
+            const condition = this.allConditions[idx];
+            if (!(check == null ? void 0 : check.checked) || !condition)
+              return;
+            const parsedDuration = Number(durationInput == null ? void 0 : durationInput.value);
+            updated.push({
+              name: condition.name,
+              duration: Number.isFinite(parsedDuration) && parsedDuration > 0 ? parsedDuration : null
+            });
+          });
+          this.onConfirm(updated);
           this.close();
         };
       }
@@ -335,6 +418,70 @@ var init_modals = __esm({
           this.close();
         };
         setTimeout(() => ta.focus(), 50);
+      }
+      onClose() {
+        this.contentEl.empty();
+      }
+    };
+    ActionModal = class extends import_obsidian.Modal {
+      constructor(app, attacker, targets, conditions, plugin, onConfirm) {
+        super(app);
+        this.attacker = attacker;
+        this.targets = targets;
+        this.conditions = conditions;
+        this.plugin = plugin;
+        this.onConfirm = onConfirm;
+      }
+      onOpen() {
+        const { contentEl } = this;
+        const lang = this.plugin.settings.language;
+        const t = LOCALIZATION[lang];
+        contentEl.createEl("h3", { text: `${t.actionModalTitle} \u2014 ${this.attacker.name}` });
+        const wrap = contentEl.createDiv("bt-modal-content");
+        const targetSelect = wrap.createEl("select");
+        this.targets.forEach((target) => {
+          targetSelect.createEl("option", {
+            value: target.id,
+            text: `${target.name} (${t.hp} ${target.hp}/${target.hpMax})`
+          });
+        });
+        const damageInput = wrap.createEl("input", {
+          type: "number",
+          placeholder: t.actionModalDamagePlaceholder
+        });
+        damageInput.min = "0";
+        const shieldRow = wrap.createDiv("bt-modal-checkbox-row");
+        const shieldToggle = shieldRow.createEl("input", { type: "checkbox" });
+        shieldToggle.checked = this.plugin.settings.shieldAbsorbsDamage;
+        shieldRow.createEl("label", { text: t.actionModalShieldLabel });
+        const conditionSelect = wrap.createEl("select");
+        conditionSelect.createEl("option", { value: "", text: t.actionModalNoCondition });
+        this.conditions.forEach((entry) => {
+          conditionSelect.createEl("option", { value: entry.name, text: entry.name });
+        });
+        const durationInput = wrap.createEl("input", {
+          type: "number",
+          placeholder: t.condModalDurationPlaceholder
+        });
+        durationInput.min = "1";
+        const noteInput = wrap.createEl("textarea", {
+          placeholder: t.actionModalNotePlaceholder
+        });
+        const row = wrap.createDiv("bt-modal-actions");
+        const ok = row.createEl("button", { cls: "bt-btn bt-btn-primary", text: t.actionModalApply });
+        ok.onclick = () => {
+          const parsedDuration = Number(durationInput.value);
+          this.onConfirm({
+            targetId: targetSelect.value,
+            damage: parseInt(damageInput.value) || 0,
+            useShield: shieldToggle.checked,
+            conditionName: conditionSelect.value,
+            conditionDuration: Number.isFinite(parsedDuration) && parsedDuration > 0 ? parsedDuration : null,
+            note: noteInput.value.trim()
+          });
+          this.close();
+        };
+        setTimeout(() => targetSelect.focus(), 50);
       }
       onClose() {
         this.contentEl.empty();
@@ -495,8 +642,8 @@ var BattleTrackerView = class extends import_obsidian2.ItemView {
     super(leaf);
     this.combatants = [];
     this.round = 1;
-    this.currentTurn = 0;
-    // Logging state
+    this.activeCombatantId = null;
+    this.editingInitiativeId = null;
     this.activeLogFile = null;
     this.logDismissed = false;
     this.logQueue = [];
@@ -515,7 +662,6 @@ var BattleTrackerView = class extends import_obsidian2.ItemView {
   async onOpen() {
     this.render();
   }
-  // ── Log actions to Markdown Note ──────────────────────────────────────────
   async writeToLog(actionText) {
     if (!this.plugin.settings.logEnabled)
       return;
@@ -545,8 +691,8 @@ var BattleTrackerView = class extends import_obsidian2.ItemView {
         const targetName = targetMatch[2].trim().toLowerCase();
         let headerIndex = -1;
         for (let i = 0; i < lines.length; i++) {
-          const m = lines[i].match(headerRegex);
-          if (m && m[2].trim().toLowerCase() === targetName) {
+          const match = lines[i].match(headerRegex);
+          if (match && match[2].trim().toLowerCase() === targetName) {
             headerIndex = i;
             break;
           }
@@ -554,13 +700,13 @@ var BattleTrackerView = class extends import_obsidian2.ItemView {
         if (headerIndex !== -1) {
           let insertIndex = lines.length;
           for (let i = headerIndex + 1; i < lines.length; i++) {
-            const m = lines[i].match(headerRegex);
-            if (m) {
-              const level = m[1].length;
-              if (level <= targetLevel) {
-                insertIndex = i;
-                break;
-              }
+            const match = lines[i].match(headerRegex);
+            if (!match)
+              continue;
+            const level = match[1].length;
+            if (level <= targetLevel) {
+              insertIndex = i;
+              break;
             }
           }
           lines.splice(insertIndex, 0, logLine);
@@ -580,9 +726,8 @@ ${logLine}
     }
   }
   triggerLogSetup() {
-    if (this.activeLogFile || this.logDismissed || this.logSetupInProgress) {
+    if (this.activeLogFile || this.logDismissed || this.logSetupInProgress)
       return;
-    }
     this.logSetupInProgress = true;
     const { LogSetupModal: LogSetupModal2 } = (init_modals(), __toCommonJS(modals_exports));
     new LogSetupModal2(this.app, this.plugin, this, async (file) => {
@@ -625,16 +770,52 @@ ${logLine}
       counter++;
     }
     const header = this.plugin.settings.logHeader;
-    const initialContent = `# ${fileName.replace(/\.md$/, "")}
+    return await this.app.vault.create(uniquePath, `# ${fileName.replace(/\.md$/, "")}
 
 ${header}
-`;
-    const file = await this.app.vault.create(uniquePath, initialContent);
-    return file;
+`);
   }
-  // ── Read a TFile and build a Combatant ──────────────────────────────────
+  parseConditionToken(token) {
+    if (typeof token === "string") {
+      const match = token.match(/^(.*?)(?:\s*\((\d+)\))?$/);
+      if (!match)
+        return null;
+      const name = match[1].trim();
+      if (!name)
+        return null;
+      const duration = match[2] ? Number(match[2]) : null;
+      return { name, duration: duration && duration > 0 ? duration : null };
+    }
+    if (token && typeof token === "object") {
+      const maybe = token;
+      if (typeof maybe.name !== "string" || !maybe.name.trim())
+        return null;
+      const durationValue = Number(maybe.duration);
+      return {
+        name: maybe.name.trim(),
+        duration: Number.isFinite(durationValue) && durationValue > 0 ? durationValue : null
+      };
+    }
+    return null;
+  }
+  parseStoredConditions(raw) {
+    if (Array.isArray(raw)) {
+      return raw.map((entry) => this.parseConditionToken(entry)).filter((entry) => Boolean(entry));
+    }
+    if (typeof raw === "string") {
+      return raw.split(",").map((entry) => this.parseConditionToken(entry.trim())).filter((entry) => Boolean(entry));
+    }
+    const single = this.parseConditionToken(raw);
+    return single ? [single] : [];
+  }
+  serializeConditions(conditions) {
+    return conditions.map((entry) => entry.duration ? `${entry.name} (${entry.duration})` : entry.name);
+  }
+  formatConditionLabel(condition) {
+    return condition.duration ? `${condition.name} \xB7 ${condition.duration}` : condition.name;
+  }
   async fileToCombatant(file) {
-    var _a, _b, _c, _d, _e, _f, _g, _h;
+    var _a, _b, _c, _d, _e, _f, _g, _h, _i;
     const f = this.plugin.settings.fields;
     const meta = (_b = (_a = this.app.metadataCache.getFileCache(file)) == null ? void 0 : _a.frontmatter) != null ? _b : {};
     const extraNames = f.extra_fields.split(",").map((s) => s.trim()).filter(Boolean);
@@ -645,22 +826,269 @@ ${header}
     }
     const hpMax = Number((_d = (_c = meta[f.hp_max]) != null ? _c : meta[f.hp]) != null ? _d : 10) || 10;
     const hp = Number((_e = meta[f.hp]) != null ? _e : hpMax) || hpMax;
+    const shield = f.shield ? Number((_f = meta[f.shield]) != null ? _f : 0) || 0 : 0;
+    const storedConditions = f.conditions ? this.parseStoredConditions(meta[f.conditions]) : [];
     return {
       id: file.path,
       name: file.basename,
-      initiative: Number((_f = meta[f.initiative]) != null ? _f : 0) || 0,
+      initiative: Number((_g = meta[f.initiative]) != null ? _g : 0) || 0,
       hp,
       hpMax,
-      ac: Number((_g = meta[f.ac]) != null ? _g : 10) || 10,
-      combatType: String((_h = meta[f.type]) != null ? _h : "NPC"),
+      shield,
+      ac: Number((_h = meta[f.ac]) != null ? _h : 10) || 10,
+      combatType: String((_i = meta[f.type]) != null ? _i : "NPC"),
       extraFields,
-      conditions: [],
+      conditions: storedConditions,
       notes: "",
-      alive: true,
+      alive: hp > 0,
       file
     };
   }
-  // ── Load combatants from vault ──────────────────────────────────────────
+  shouldSyncCombatant(combatant) {
+    if (!this.plugin.settings.realtimeSync)
+      return false;
+    if (this.plugin.settings.realtimeSyncMode === "all")
+      return true;
+    return combatant.combatType === "PC";
+  }
+  async syncCombatantToNote(combatant) {
+    if (!this.shouldSyncCombatant(combatant))
+      return;
+    const fields = this.plugin.settings.fields;
+    try {
+      await this.app.fileManager.processFrontMatter(combatant.file, (frontmatter) => {
+        frontmatter[fields.hp] = combatant.hp;
+        if (fields.initiative)
+          frontmatter[fields.initiative] = combatant.initiative;
+        if (fields.shield)
+          frontmatter[fields.shield] = combatant.shield;
+        if (fields.conditions)
+          frontmatter[fields.conditions] = this.serializeConditions(combatant.conditions);
+        Object.entries(combatant.extraFields).forEach(([key, value]) => {
+          frontmatter[key] = value;
+        });
+      });
+    } catch (error) {
+      console.error("Failed to sync combatant note:", error);
+      new import_obsidian2.Notice(this.plugin.settings.language === "es" ? `No se pudo sincronizar ${combatant.name}.` : `Could not sync ${combatant.name}.`);
+    }
+  }
+  ensureActiveCombatant() {
+    const alive = this.aliveSorted();
+    if (!alive.length) {
+      this.activeCombatantId = null;
+      return;
+    }
+    if (!this.activeCombatantId || !alive.some((combatant) => combatant.id === this.activeCombatantId)) {
+      this.activeCombatantId = alive[0].id;
+    }
+  }
+  sorted() {
+    return [...this.combatants].sort((a, b) => b.initiative - a.initiative || a.name.localeCompare(b.name));
+  }
+  aliveSorted() {
+    return this.sorted().filter((combatant) => combatant.alive);
+  }
+  getCurrentTurnIndex(alive = this.aliveSorted()) {
+    if (!alive.length || !this.activeCombatantId)
+      return 0;
+    const index = alive.findIndex((combatant) => combatant.id === this.activeCombatantId);
+    return index >= 0 ? index : 0;
+  }
+  getCombatant(id) {
+    return this.combatants.find((combatant) => combatant.id === id);
+  }
+  async processConditionDurations(combatant) {
+    if (!combatant.conditions.length)
+      return;
+    const lang = this.plugin.settings.language;
+    const retained = [];
+    let changed = false;
+    for (const condition of combatant.conditions) {
+      if (condition.duration == null) {
+        retained.push(condition);
+        continue;
+      }
+      const nextDuration = condition.duration - 1;
+      changed = true;
+      if (nextDuration <= 0) {
+        await this.writeToLog(lang === "es" ? `${combatant.name} pierde la condici\xF3n por expiraci\xF3n: ${condition.name}` : `${combatant.name} loses condition by expiration: ${condition.name}`);
+        continue;
+      }
+      retained.push({ ...condition, duration: nextDuration });
+    }
+    if (changed) {
+      combatant.conditions = retained;
+      await this.syncCombatantToNote(combatant);
+    }
+  }
+  async nextTurn() {
+    const alive = this.aliveSorted();
+    if (!alive.length)
+      return;
+    this.ensureActiveCombatant();
+    const currentIndex = this.getCurrentTurnIndex(alive);
+    const nextIndex = (currentIndex + 1) % alive.length;
+    if (nextIndex === 0)
+      this.round++;
+    this.activeCombatantId = alive[nextIndex].id;
+    const currentCombatant = alive[nextIndex];
+    await this.processConditionDurations(currentCombatant);
+    await this.writeToLog(this.plugin.settings.language === "es" ? `Turno de ${currentCombatant.name}` : `Turn of ${currentCombatant.name}`);
+    this.render();
+  }
+  applyDamage(combatant, amount, heal, useShield) {
+    if (heal) {
+      const previous = combatant.hp;
+      combatant.hp = Math.min(combatant.hpMax, combatant.hp + amount);
+      if (combatant.hp > 0)
+        combatant.alive = true;
+      return {
+        finalDamage: 0,
+        absorbedByShield: 0,
+        defeated: false,
+        healed: combatant.hp - previous
+      };
+    }
+    let remaining = Math.max(0, amount);
+    let absorbedByShield = 0;
+    if (useShield && combatant.shield > 0) {
+      absorbedByShield = Math.min(combatant.shield, remaining);
+      combatant.shield -= absorbedByShield;
+      remaining -= absorbedByShield;
+    }
+    combatant.hp = Math.max(0, combatant.hp - remaining);
+    if (combatant.hp === 0)
+      combatant.alive = false;
+    return {
+      finalDamage: remaining,
+      absorbedByShield,
+      defeated: combatant.hp === 0,
+      healed: 0
+    };
+  }
+  async applyDmg(id, amount, heal, useShield) {
+    const combatant = this.getCombatant(id);
+    if (!combatant)
+      return;
+    const lang = this.plugin.settings.language;
+    const result = this.applyDamage(combatant, amount, heal, useShield);
+    if (heal) {
+      await this.writeToLog(lang === "es" ? `${combatant.name} se cura ${result.healed} PV (PV: ${combatant.hp}/${combatant.hpMax})` : `${combatant.name} heals ${result.healed} HP (HP: ${combatant.hp}/${combatant.hpMax})`);
+    } else {
+      const shieldText = result.absorbedByShield > 0 ? lang === "es" ? `, ${result.absorbedByShield} absorbidos por escudo` : `, ${result.absorbedByShield} absorbed by shield` : "";
+      await this.writeToLog(lang === "es" ? `${combatant.name} recibe ${result.finalDamage} de da\xF1o${shieldText} (PV: ${combatant.hp}/${combatant.hpMax})` : `${combatant.name} takes ${result.finalDamage} damage${shieldText} (HP: ${combatant.hp}/${combatant.hpMax})`);
+      if (result.defeated) {
+        await this.writeToLog(lang === "es" ? `${combatant.name} ha sido derrotado` : `${combatant.name} has been defeated`);
+      }
+    }
+    await this.syncCombatantToNote(combatant);
+    this.ensureActiveCombatant();
+    this.render();
+  }
+  async setInitiative(id, initiative) {
+    const combatant = this.getCombatant(id);
+    if (!combatant)
+      return;
+    combatant.initiative = initiative;
+    this.editingInitiativeId = null;
+    await this.syncCombatantToNote(combatant);
+    await this.writeToLog(this.plugin.settings.language === "es" ? `${combatant.name} cambia su iniciativa a ${initiative}` : `${combatant.name} changes initiative to ${initiative}`);
+    this.ensureActiveCombatant();
+    this.render();
+  }
+  async updateConditions(id, updated) {
+    var _a, _b;
+    const combatant = this.getCombatant(id);
+    if (!combatant)
+      return;
+    const lang = this.plugin.settings.language;
+    const oldMap = new Map(combatant.conditions.map((condition) => [condition.name, condition.duration]));
+    const newMap = new Map(updated.map((condition) => [condition.name, condition.duration]));
+    combatant.conditions = updated;
+    for (const condition of updated) {
+      if (!oldMap.has(condition.name)) {
+        await this.writeToLog(lang === "es" ? `${combatant.name} obtiene la condici\xF3n: ${this.formatConditionLabel(condition)}` : `${combatant.name} gains condition: ${this.formatConditionLabel(condition)}`);
+      } else if (oldMap.get(condition.name) !== condition.duration) {
+        await this.writeToLog(lang === "es" ? `${combatant.name} actualiza la duraci\xF3n de ${condition.name} a ${(_a = condition.duration) != null ? _a : "\u221E"}` : `${combatant.name} updates ${condition.name} duration to ${(_b = condition.duration) != null ? _b : "\u221E"}`);
+      }
+    }
+    for (const [name] of oldMap.entries()) {
+      if (!newMap.has(name)) {
+        await this.writeToLog(lang === "es" ? `${combatant.name} pierde la condici\xF3n: ${name}` : `${combatant.name} loses condition: ${name}`);
+      }
+    }
+    await this.syncCombatantToNote(combatant);
+    this.render();
+  }
+  async modExtra(id, key, delta) {
+    var _a;
+    const combatant = this.getCombatant(id);
+    if (!combatant)
+      return;
+    combatant.extraFields[key] = Math.max(0, ((_a = combatant.extraFields[key]) != null ? _a : 0) + delta);
+    await this.syncCombatantToNote(combatant);
+    await this.writeToLog(this.plugin.settings.language === "es" ? `${combatant.name} - ${key.toUpperCase()} modificado a ${combatant.extraFields[key]}` : `${combatant.name} - ${key.toUpperCase()} modified to ${combatant.extraFields[key]}`);
+    this.render();
+  }
+  async removeCombatant(id) {
+    const combatant = this.getCombatant(id);
+    if (combatant) {
+      await this.writeToLog(this.plugin.settings.language === "es" ? `${combatant.name} retirado del combate` : `${combatant.name} removed from combat`);
+    }
+    this.combatants = this.combatants.filter((entry) => entry.id !== id);
+    if (this.activeCombatantId === id)
+      this.activeCombatantId = null;
+    this.ensureActiveCombatant();
+    this.render();
+  }
+  resetBattle() {
+    void this.writeToLog(LOCALIZATION[this.plugin.settings.language].logEnded);
+    this.combatants = [];
+    this.round = 1;
+    this.activeCombatantId = null;
+    this.activeLogFile = null;
+    this.logDismissed = false;
+    this.logQueue = [];
+    this.editingInitiativeId = null;
+    this.render();
+  }
+  async applyAction(attackerId, payload) {
+    const attacker = this.getCombatant(attackerId);
+    const target = this.getCombatant(payload.targetId);
+    if (!attacker || !target)
+      return;
+    const lang = this.plugin.settings.language;
+    const result = payload.damage > 0 ? this.applyDamage(target, payload.damage, false, payload.useShield) : { finalDamage: 0, absorbedByShield: 0, defeated: false, healed: 0 };
+    if (payload.conditionName) {
+      const existing = target.conditions.find((condition) => condition.name === payload.conditionName);
+      if (existing)
+        existing.duration = payload.conditionDuration;
+      else
+        target.conditions.push({ name: payload.conditionName, duration: payload.conditionDuration });
+    }
+    const parts = [];
+    if (payload.damage > 0) {
+      parts.push(lang === "es" ? `le inflige ${result.finalDamage} de da\xF1o` : `deals ${result.finalDamage} damage`);
+      if (result.absorbedByShield > 0) {
+        parts.push(lang === "es" ? `${result.absorbedByShield} absorbidos por escudo` : `${result.absorbedByShield} absorbed by shield`);
+      }
+    }
+    if (payload.conditionName) {
+      parts.push(lang === "es" ? `aplica ${payload.conditionName}${payload.conditionDuration ? ` (${payload.conditionDuration})` : ""}` : `applies ${payload.conditionName}${payload.conditionDuration ? ` (${payload.conditionDuration})` : ""}`);
+    }
+    if (payload.note)
+      parts.push(payload.note);
+    const actionVerb = lang === "es" ? "ataca a" : "attacks";
+    const suffix = parts.length ? ` ${lang === "es" ? "y" : "and"} ${parts.join(", ")}` : "";
+    await this.writeToLog(lang === "es" ? `${attacker.name} ${actionVerb} ${target.name}${suffix}.` : `${attacker.name} ${actionVerb} ${target.name}${suffix}.`);
+    if (result.defeated) {
+      await this.writeToLog(lang === "es" ? `${target.name} ha sido derrotado` : `${target.name} has been defeated`);
+    }
+    await this.syncCombatantToNote(target);
+    this.ensureActiveCombatant();
+    this.render();
+  }
   async loadFromVault() {
     const folder = this.plugin.settings.combatantFolder.trim();
     const lang = this.plugin.settings.language;
@@ -671,138 +1099,39 @@ ${header}
         new import_obsidian2.Notice(lang === "es" ? `Carpeta "${folder}" no encontrada.` : `Folder "${folder}" not found.`);
         return;
       }
-      files = this.app.vault.getMarkdownFiles().filter((f) => f.path.startsWith(folder + "/"));
+      files = this.app.vault.getMarkdownFiles().filter((file) => file.path.startsWith(folder + "/"));
     } else {
       new PickCombatantsModal(this.app, this.plugin, async (picked) => {
-        const loaded2 = await Promise.all(picked.map((f) => this.fileToCombatant(f)));
-        for (const c of loaded2) {
-          if (!this.combatants.find((x) => x.id === c.id)) {
-            this.combatants.push(c);
+        const loaded2 = await Promise.all(picked.map((file) => this.fileToCombatant(file)));
+        for (const combatant of loaded2) {
+          if (!this.combatants.find((entry) => entry.id === combatant.id)) {
+            this.combatants.push(combatant);
           }
         }
-        loaded2.forEach((c) => {
-          const logMsg = lang === "es" ? `Combatiente cargado: ${c.name} (Iniciativa: ${c.initiative}, PV: ${c.hp}/${c.hpMax})` : `Combatant loaded: ${c.name} (Initiative: ${c.initiative}, HP: ${c.hp}/${c.hpMax})`;
-          this.writeToLog(logMsg);
-        });
-        this.render();
-        if (this.combatants.length > 0) {
-          this.triggerLogSetup();
+        this.ensureActiveCombatant();
+        for (const combatant of loaded2) {
+          await this.writeToLog(lang === "es" ? `Combatiente cargado: ${combatant.name} (Iniciativa: ${combatant.initiative}, PV: ${combatant.hp}/${combatant.hpMax})` : `Combatant loaded: ${combatant.name} (Initiative: ${combatant.initiative}, HP: ${combatant.hp}/${combatant.hpMax})`);
         }
+        this.render();
+        if (this.combatants.length > 0)
+          this.triggerLogSetup();
       }).open();
       return;
     }
-    const loaded = await Promise.all(files.map((f) => this.fileToCombatant(f)));
-    for (const c of loaded) {
-      if (!this.combatants.find((x) => x.id === c.id)) {
-        this.combatants.push(c);
+    const loaded = await Promise.all(files.map((file) => this.fileToCombatant(file)));
+    for (const combatant of loaded) {
+      if (!this.combatants.find((entry) => entry.id === combatant.id)) {
+        this.combatants.push(combatant);
       }
     }
-    loaded.forEach((c) => {
-      const logMsg = lang === "es" ? `Combatiente cargado: ${c.name} (Iniciativa: ${c.initiative}, PV: ${c.hp}/${c.hpMax})` : `Combatant loaded: ${c.name} (Initiative: ${c.initiative}, HP: ${c.hp}/${c.hpMax})`;
-      this.writeToLog(logMsg);
-    });
+    this.ensureActiveCombatant();
+    for (const combatant of loaded) {
+      await this.writeToLog(lang === "es" ? `Combatiente cargado: ${combatant.name} (Iniciativa: ${combatant.initiative}, PV: ${combatant.hp}/${combatant.hpMax})` : `Combatant loaded: ${combatant.name} (Initiative: ${combatant.initiative}, HP: ${combatant.hp}/${combatant.hpMax})`);
+    }
     this.render();
-    if (this.combatants.length > 0) {
+    if (this.combatants.length > 0)
       this.triggerLogSetup();
-    }
   }
-  // ── Sorted combatants by initiative ────────────────────────────────────
-  sorted() {
-    return [...this.combatants].sort((a, b) => b.initiative - a.initiative);
-  }
-  aliveSorted() {
-    return this.sorted().filter((c) => c.alive);
-  }
-  // ── Advance turn ───────────────────────────────────────────────────────
-  nextTurn() {
-    const alive = this.aliveSorted();
-    if (!alive.length)
-      return;
-    this.currentTurn = (this.currentTurn + 1) % alive.length;
-    if (this.currentTurn === 0)
-      this.round++;
-    const currentC = alive[this.currentTurn];
-    const lang = this.plugin.settings.language;
-    const logMsg = lang === "es" ? `Turno de ${currentC.name}` : `Turn of ${currentC.name}`;
-    this.writeToLog(logMsg);
-    this.render();
-  }
-  // ── Apply damage / heal ────────────────────────────────────────────────
-  applyDmg(id, amount, heal) {
-    const c = this.combatants.find((x) => x.id === id);
-    if (!c)
-      return;
-    const lang = this.plugin.settings.language;
-    if (heal) {
-      c.hp = Math.min(c.hpMax, c.hp + amount);
-      const logMsg = lang === "es" ? `${c.name} se cura ${amount} PV (PV: ${c.hp}/${c.hpMax})` : `${c.name} heals ${amount} HP (HP: ${c.hp}/${c.hpMax})`;
-      this.writeToLog(logMsg);
-    } else {
-      c.hp = Math.max(0, c.hp - amount);
-      const logMsg = lang === "es" ? `${c.name} recibe ${amount} de da\xF1o (PV: ${c.hp}/${c.hpMax})` : `${c.name} takes ${amount} damage (HP: ${c.hp}/${c.hpMax})`;
-      this.writeToLog(logMsg);
-      if (c.hp === 0) {
-        c.alive = false;
-        const defeatMsg = lang === "es" ? `${c.name} ha sido derrotado` : `${c.name} has been defeated`;
-        this.writeToLog(defeatMsg);
-      }
-    }
-    this.render();
-  }
-  // ── Toggle condition ───────────────────────────────────────────────────
-  toggleCondition(id, cond) {
-    const c = this.combatants.find((x) => x.id === id);
-    if (!c)
-      return;
-    const lang = this.plugin.settings.language;
-    const idx = c.conditions.indexOf(cond);
-    if (idx >= 0) {
-      c.conditions.splice(idx, 1);
-      const logMsg = lang === "es" ? `${c.name} pierde la condici\xF3n: ${cond}` : `${c.name} loses condition: ${cond}`;
-      this.writeToLog(logMsg);
-    } else {
-      c.conditions.push(cond);
-      const logMsg = lang === "es" ? `${c.name} obtiene la condici\xF3n: ${cond}` : `${c.name} gains condition: ${cond}`;
-      this.writeToLog(logMsg);
-    }
-    this.render();
-  }
-  // ── Modify extra field ─────────────────────────────────────────────────
-  modExtra(id, key, delta) {
-    var _a;
-    const c = this.combatants.find((x) => x.id === id);
-    if (!c)
-      return;
-    const lang = this.plugin.settings.language;
-    c.extraFields[key] = Math.max(0, ((_a = c.extraFields[key]) != null ? _a : 0) + delta);
-    const logMsg = lang === "es" ? `${c.name} - ${key.toUpperCase()} modificado a ${c.extraFields[key]}` : `${c.name} - ${key.toUpperCase()} modified to ${c.extraFields[key]}`;
-    this.writeToLog(logMsg);
-    this.render();
-  }
-  // ── Remove combatant ───────────────────────────────────────────────────
-  removeCombatant(id) {
-    const c = this.combatants.find((x) => x.id === id);
-    const lang = this.plugin.settings.language;
-    if (c) {
-      const logMsg = lang === "es" ? `${c.name} retirado del combate` : `${c.name} removed from combat`;
-      this.writeToLog(logMsg);
-    }
-    this.combatants = this.combatants.filter((x) => x.id !== id);
-    this.render();
-  }
-  // ── Reset battle ───────────────────────────────────────────────────────
-  resetBattle() {
-    const lang = this.plugin.settings.language;
-    this.writeToLog(LOCALIZATION[lang].logEnded);
-    this.combatants = [];
-    this.round = 1;
-    this.currentTurn = 0;
-    this.activeLogFile = null;
-    this.logDismissed = false;
-    this.logQueue = [];
-    this.render();
-  }
-  // ── Main render ────────────────────────────────────────────────────────
   render() {
     const container = this.containerEl.children[1];
     container.empty();
@@ -810,17 +1139,19 @@ ${header}
     const lang = this.plugin.settings.language;
     const t = LOCALIZATION[lang];
     const conditionEntries = this.plugin.settings.conditions;
-    const conditions = conditionEntries.map((e) => e.name);
+    const alive = this.aliveSorted();
+    const allSorted = this.sorted();
+    this.ensureActiveCombatant();
+    const activeIndex = this.getCurrentTurnIndex(alive);
     const topBar = container.createDiv("bt-topbar");
-    const roundEl = topBar.createDiv("bt-round-badge");
-    roundEl.setText(`${t.round} ${this.round}`);
+    topBar.createDiv("bt-round-badge", (el) => el.setText(`${t.round} ${this.round}`));
     const topActions = topBar.createDiv("bt-top-actions");
     const nextBtn = topActions.createEl("button", { cls: "bt-btn bt-btn-primary" });
     nextBtn.innerHTML = t.nextTurn;
-    nextBtn.onclick = () => this.nextTurn();
+    nextBtn.onclick = () => void this.nextTurn();
     const loadBtn = topActions.createEl("button", { cls: "bt-btn" });
     loadBtn.innerHTML = t.load;
-    loadBtn.onclick = () => this.loadFromVault();
+    loadBtn.onclick = () => void this.loadFromVault();
     if (this.plugin.settings.logEnabled) {
       const logBtn = topActions.createEl("button", {
         cls: `bt-btn${this.activeLogFile ? " bt-btn-primary" : ""}`,
@@ -835,12 +1166,11 @@ ${header}
       if (confirm(t.resetConfirm))
         this.resetBattle();
     };
-    if (this.aliveSorted().length) {
+    if (alive.length) {
       const strip = container.createDiv("bt-init-strip");
-      const alive2 = this.aliveSorted();
-      alive2.forEach((c, i) => {
-        const chip = strip.createDiv(`bt-init-chip${i === this.currentTurn % alive2.length ? " active" : ""}`);
-        chip.setText(`${c.name} (${c.initiative})`);
+      alive.forEach((combatant, index) => {
+        const chip = strip.createDiv(`bt-init-chip${index === activeIndex ? " active" : ""}`);
+        chip.setText(`${combatant.name} (${combatant.initiative})`);
       });
     }
     if (!this.combatants.length) {
@@ -848,53 +1178,82 @@ ${header}
       empty.createEl("p", { text: t.emptyState });
       return;
     }
-    const alive = this.aliveSorted();
-    const allSorted = this.sorted();
-    allSorted.forEach((c) => {
-      const aliveIdx = alive.findIndex((x) => x.id === c.id);
-      const isActive = c.alive && aliveIdx === this.currentTurn % Math.max(alive.length, 1);
-      const ratio = c.hp / c.hpMax;
-      const card = container.createDiv(`bt-card${isActive ? " bt-card-active" : ""}${!c.alive ? " bt-card-dead" : ""}`);
+    allSorted.forEach((combatant) => {
+      const isActive = combatant.alive && combatant.id === this.activeCombatantId;
+      const ratio = combatant.hpMax > 0 ? combatant.hp / combatant.hpMax : 0;
+      const card = container.createDiv(`bt-card${isActive ? " bt-card-active" : ""}${!combatant.alive ? " bt-card-dead" : ""}`);
       const header = card.createDiv("bt-card-header");
-      const avatarWrap = header.createDiv("bt-avatar bt-avatar-" + (c.combatType === "PC" ? "pc" : c.combatType === "Enemy" ? "enemy" : "npc"));
-      avatarWrap.setText(c.name.slice(0, 2).toUpperCase());
+      const avatar = header.createDiv(`bt-avatar bt-avatar-${combatant.combatType === "PC" ? "pc" : combatant.combatType === "Enemy" ? "enemy" : "npc"}`);
+      avatar.setText(combatant.name.slice(0, 2).toUpperCase());
       const nameWrap = header.createDiv("bt-name-wrap");
-      const nameEl = nameWrap.createEl("span", { cls: "bt-name", text: c.name });
+      const nameEl = nameWrap.createEl("span", { cls: "bt-name", text: combatant.name });
       nameEl.style.cursor = "pointer";
       nameEl.title = lang === "es" ? "Abrir nota" : "Open note";
-      nameEl.onclick = () => this.app.workspace.getLeaf(true).openFile(c.file);
-      nameWrap.createEl("span", {
-        cls: "bt-sub",
-        text: `${t.init} ${c.initiative} \xB7 ${t.ac} ${c.ac}`
-      });
-      const badge = header.createDiv(`bt-badge bt-badge-${c.combatType === "PC" ? "pc" : c.combatType === "Enemy" ? "enemy" : "npc"}`);
-      badge.setText(c.combatType);
+      nameEl.onclick = () => void this.app.workspace.getLeaf(true).openFile(combatant.file);
+      const metaRow = nameWrap.createDiv("bt-sub bt-init-edit-row");
+      if (this.editingInitiativeId === combatant.id) {
+        const initInput = metaRow.createEl("input", {
+          cls: "bt-init-edit-input",
+          type: "number"
+        });
+        initInput.value = String(combatant.initiative);
+        const commit = () => void this.setInitiative(combatant.id, parseInt(initInput.value) || 0);
+        initInput.onblur = commit;
+        initInput.onkeydown = (evt) => {
+          if (evt.key === "Enter")
+            commit();
+          if (evt.key === "Escape") {
+            this.editingInitiativeId = null;
+            this.render();
+          }
+        };
+        setTimeout(() => {
+          initInput.focus();
+          initInput.select();
+        }, 0);
+      } else {
+        const initText = metaRow.createEl("span", { text: `${t.init} ${combatant.initiative} \xB7 ${t.ac} ${combatant.ac}` });
+        initText.ondblclick = () => {
+          this.editingInitiativeId = combatant.id;
+          this.render();
+        };
+        if (combatant.shield > 0) {
+          metaRow.createEl("span", { cls: "bt-sub-shield", text: `${t.shield} ${combatant.shield}` });
+        }
+      }
+      const badge = header.createDiv(`bt-badge bt-badge-${combatant.combatType === "PC" ? "pc" : combatant.combatType === "Enemy" ? "enemy" : "npc"}`);
+      badge.setText(combatant.combatType);
+      const initEditBtn = header.createEl("button", { cls: "bt-btn-icon", title: t.editInitiative });
+      initEditBtn.setText("\u270E");
+      initEditBtn.onclick = () => {
+        this.editingInitiativeId = combatant.id;
+        this.render();
+      };
       const removeBtn = header.createEl("button", { cls: "bt-btn-icon", title: t.removeTitle });
       removeBtn.setText("\u2715");
-      removeBtn.onclick = () => this.removeCombatant(c.id);
-      if (c.conditions.length) {
+      removeBtn.onclick = () => void this.removeCombatant(combatant.id);
+      if (combatant.conditions.length) {
         const condRow = card.createDiv("bt-cond-row");
-        c.conditions.forEach((cond) => {
+        combatant.conditions.forEach((condition) => {
           const tag = condRow.createDiv("bt-cond-tag");
-          tag.setText(cond + " \xD7");
-          const entry = conditionEntries.find((e) => e.name === cond);
+          tag.setText(`${this.formatConditionLabel(condition)} \xD7`);
+          const entry = conditionEntries.find((item) => item.name === condition.name);
           if (entry == null ? void 0 : entry.color) {
             tag.style.color = entry.color;
             tag.style.borderColor = entry.color;
             tag.style.backgroundColor = entry.color + "22";
           }
-          tag.onclick = () => this.toggleCondition(c.id, cond);
         });
       }
       const hpWrap = card.createDiv("bt-hp-wrap");
       const hpLabelRow = hpWrap.createDiv("bt-hp-label-row");
       hpLabelRow.createEl("span", { text: t.hp, cls: "bt-label" });
-      hpLabelRow.createEl("span", { cls: "bt-hp-text", text: `${c.hp} / ${c.hpMax}` });
+      hpLabelRow.createEl("span", { cls: "bt-hp-text", text: `${combatant.hp} / ${combatant.hpMax}` });
       const bar = hpWrap.createDiv("bt-bar");
       const fill = bar.createDiv("bt-bar-fill");
       fill.style.width = `${Math.max(0, ratio * 100)}%`;
       fill.className = `bt-bar-fill ${ratio > 0.6 ? "bt-hp-ok" : ratio > 0.3 ? "bt-hp-mid" : "bt-hp-low"}`;
-      const extraNames = Object.keys(c.extraFields);
+      const extraNames = Object.keys(combatant.extraFields);
       if (extraNames.length) {
         const extraRow = card.createDiv("bt-extra-row");
         extraNames.forEach((key) => {
@@ -902,69 +1261,72 @@ ${header}
           box.createEl("span", { cls: "bt-label", text: key.toUpperCase() });
           const valRow = box.createDiv("bt-extra-val-row");
           const minusBtn = valRow.createEl("button", { cls: "bt-btn-mini", text: "\u2212" });
-          minusBtn.onclick = () => this.modExtra(c.id, key, -1);
-          valRow.createEl("span", { cls: "bt-extra-val", text: String(c.extraFields[key]) });
+          minusBtn.onclick = () => void this.modExtra(combatant.id, key, -1);
+          valRow.createEl("span", { cls: "bt-extra-val", text: String(combatant.extraFields[key]) });
           const plusBtn = valRow.createEl("button", { cls: "bt-btn-mini", text: "+" });
-          plusBtn.onclick = () => this.modExtra(c.id, key, 1);
+          plusBtn.onclick = () => void this.modExtra(combatant.id, key, 1);
         });
       }
-      if (c.notes) {
-        card.createEl("p", { cls: "bt-notes", text: c.notes });
+      if (combatant.notes) {
+        card.createEl("p", { cls: "bt-notes", text: combatant.notes });
       }
       const actions = card.createDiv("bt-actions");
       const dmgBtn = actions.createEl("button", { cls: "bt-btn bt-btn-danger-soft" });
       dmgBtn.setText(t.damageHeal);
-      dmgBtn.onclick = () => new DmgModal(this.app, c.name, this.plugin, (val, heal) => {
-        this.applyDmg(c.id, val, heal);
+      dmgBtn.onclick = () => new DmgModal(this.app, combatant.name, this.plugin, combatant.shield > 0, (value, heal, useShield) => {
+        void this.applyDmg(combatant.id, value, heal, useShield);
       }).open();
       const condBtn = actions.createEl("button", { cls: "bt-btn" });
       condBtn.setText(t.status);
-      condBtn.onclick = () => new ConditionModal(this.app, conditionEntries, c.conditions, this.plugin, (updated) => {
-        const removed = c.conditions.filter((x) => !updated.includes(x));
-        const added = updated.filter((x) => !c.conditions.includes(x));
-        c.conditions = updated;
-        added.forEach((cond) => {
-          const logMsg = lang === "es" ? `${c.name} obtiene la condici\xF3n: ${cond}` : `${c.name} gains condition: ${cond}`;
-          this.writeToLog(logMsg);
-        });
-        removed.forEach((cond) => {
-          const logMsg = lang === "es" ? `${c.name} pierde la condici\xF3n: ${cond}` : `${c.name} loses condition: ${cond}`;
-          this.writeToLog(logMsg);
-        });
-        this.render();
+      condBtn.onclick = () => new ConditionModal(this.app, conditionEntries, combatant.conditions, this.plugin, (updated) => {
+        void this.updateConditions(combatant.id, updated);
       }).open();
       const noteBtn = actions.createEl("button", { cls: "bt-btn" });
       noteBtn.setText(t.note);
-      noteBtn.onclick = () => new NoteModal(this.app, c.notes, this.plugin, (txt) => {
-        c.notes = txt;
-        const logMsg = lang === "es" ? `${c.name} - Nota: ${txt || "vaciada"}` : `${c.name} - Note: ${txt || "cleared"}`;
-        this.writeToLog(logMsg);
+      noteBtn.onclick = () => new NoteModal(this.app, combatant.notes, this.plugin, (text) => {
+        combatant.notes = text;
+        void this.writeToLog(lang === "es" ? `${combatant.name} - Nota: ${text || "vaciada"}` : `${combatant.name} - Note: ${text || "cleared"}`);
         this.render();
       }).open();
-      if (c.alive) {
+      if (isActive && alive.length > 1) {
+        const actionBtn = actions.createEl("button", { cls: "bt-btn bt-btn-primary" });
+        actionBtn.setText(t.action);
+        actionBtn.onclick = () => new ActionModal(
+          this.app,
+          combatant,
+          alive.filter((entry) => entry.id !== combatant.id),
+          conditionEntries,
+          this.plugin,
+          (payload) => void this.applyAction(combatant.id, payload)
+        ).open();
+      }
+      if (combatant.alive) {
         const defeatBtn = actions.createEl("button", { cls: "bt-btn bt-btn-ghost" });
         defeatBtn.setText(t.defeat);
-        defeatBtn.onclick = () => {
-          c.alive = false;
-          c.hp = 0;
-          const logMsg = lang === "es" ? `${c.name} ha sido derrotado` : `${c.name} has been defeated`;
-          this.writeToLog(logMsg);
+        defeatBtn.onclick = async () => {
+          combatant.alive = false;
+          combatant.hp = 0;
+          await this.syncCombatantToNote(combatant);
+          await this.writeToLog(lang === "es" ? `${combatant.name} ha sido derrotado` : `${combatant.name} has been defeated`);
+          this.ensureActiveCombatant();
           this.render();
         };
       } else {
-        const revBtn = actions.createEl("button", { cls: "bt-btn" });
-        revBtn.setText(t.revive);
-        revBtn.onclick = () => {
-          c.alive = true;
-          c.hp = 1;
-          const logMsg = lang === "es" ? `${c.name} ha resucitado` : `${c.name} has been revived`;
-          this.writeToLog(logMsg);
+        const reviveBtn = actions.createEl("button", { cls: "bt-btn" });
+        reviveBtn.setText(t.revive);
+        reviveBtn.onclick = async () => {
+          combatant.alive = true;
+          combatant.hp = Math.max(1, combatant.hp);
+          await this.syncCombatantToNote(combatant);
+          await this.writeToLog(lang === "es" ? `${combatant.name} ha resucitado` : `${combatant.name} has been revived`);
+          this.ensureActiveCombatant();
           this.render();
         };
       }
     });
   }
   async onClose() {
+    await Promise.resolve();
   }
 };
 
@@ -999,12 +1361,17 @@ var DEFAULT_SETTINGS = {
     initiative: "initiative",
     hp: "hp",
     hp_max: "hp_max",
+    shield: "shield",
     ac: "ac",
     type: "type",
-    extra_fields: "mp,stamina"
+    extra_fields: "mp,stamina",
+    conditions: "conditions"
   },
   conditions: DEFAULT_CONDITIONS_ES,
   combatantFolder: "",
+  realtimeSync: false,
+  realtimeSyncMode: "pc",
+  shieldAbsorbsDamage: true,
   logEnabled: true,
   logMode: "ask",
   logHeader: "## Registro de Combate",
@@ -1069,6 +1436,10 @@ var BattleTrackerSettingTab = class extends import_obsidian3.PluginSettingTab {
       f.hp_max = v;
       await this.plugin.saveSettings();
     }));
+    new import_obsidian3.Setting(containerEl).setName(t.settingsShieldName).setDesc(t.settingsShieldDesc).addText((text) => text.setValue(f.shield).onChange(async (v) => {
+      f.shield = v;
+      await this.plugin.saveSettings();
+    }));
     new import_obsidian3.Setting(containerEl).setName(t.settingsAcName).setDesc(t.settingsAcDesc).addText((text) => text.setValue(f.ac).onChange(async (v) => {
       f.ac = v;
       await this.plugin.saveSettings();
@@ -1081,6 +1452,32 @@ var BattleTrackerSettingTab = class extends import_obsidian3.PluginSettingTab {
       f.extra_fields = v;
       await this.plugin.saveSettings();
     }));
+    new import_obsidian3.Setting(containerEl).setName(t.settingsConditionsFieldName).setDesc(t.settingsConditionsFieldDesc).addText((text) => text.setValue(f.conditions).onChange(async (v) => {
+      f.conditions = v;
+      await this.plugin.saveSettings();
+    }));
+    containerEl.createEl("h3", { text: t.settingsRealtimeTitle });
+    new import_obsidian3.Setting(containerEl).setName(t.settingsRealtimeSyncName).setDesc(t.settingsRealtimeSyncDesc).addToggle(
+      (toggle) => toggle.setValue(this.plugin.settings.realtimeSync).onChange(async (v) => {
+        this.plugin.settings.realtimeSync = v;
+        await this.plugin.saveSettings();
+        this.display();
+      })
+    );
+    if (this.plugin.settings.realtimeSync) {
+      new import_obsidian3.Setting(containerEl).setName(t.settingsRealtimeModeName).setDesc(t.settingsRealtimeModeDesc).addDropdown(
+        (dropdown) => dropdown.addOption("pc", t.settingsRealtimeModePc).addOption("all", t.settingsRealtimeModeAll).setValue(this.plugin.settings.realtimeSyncMode).onChange(async (value) => {
+          this.plugin.settings.realtimeSyncMode = value;
+          await this.plugin.saveSettings();
+        })
+      );
+    }
+    new import_obsidian3.Setting(containerEl).setName(t.settingsShieldAbsorbName).setDesc(t.settingsShieldAbsorbDesc).addToggle(
+      (toggle) => toggle.setValue(this.plugin.settings.shieldAbsorbsDamage).onChange(async (v) => {
+        this.plugin.settings.shieldAbsorbsDamage = v;
+        await this.plugin.saveSettings();
+      })
+    );
     containerEl.createEl("h3", { text: t.settingsCondTitle });
     containerEl.createEl("p", { text: t.settingsCondColorDesc, cls: "setting-item-description" });
     const condListEl = containerEl.createDiv("bt-settings-cond-list");
@@ -1222,14 +1619,17 @@ var BattleTrackerPlugin = class extends import_obsidian4.Plugin {
       leaf = existing[0];
     } else {
       leaf = workspace.getRightLeaf(false);
+      if (!leaf)
+        return;
       await leaf.setViewState({ type: VIEW_TYPE, active: true });
     }
-    workspace.revealLeaf(leaf);
+    if (leaf)
+      workspace.revealLeaf(leaf);
   }
   async loadSettings() {
+    var _a;
     this.settings = Object.assign({}, DEFAULT_SETTINGS, await this.loadData());
-    if (!this.settings.fields)
-      this.settings.fields = DEFAULT_SETTINGS.fields;
+    this.settings.fields = Object.assign({}, DEFAULT_SETTINGS.fields, (_a = this.settings.fields) != null ? _a : {});
     if (typeof this.settings.conditions === "string") {
       this.settings.conditions = this.settings.conditions.split(",").map((s) => s.trim()).filter(Boolean).map((name) => ({ name, color: "" }));
       await this.saveSettings();

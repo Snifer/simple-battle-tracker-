@@ -7,6 +7,24 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [1.1.0] - 2026-05-26
+
+### Added
+- Optional real-time synchronization back to the original Markdown note for tracked combatants.
+- New YAML field mappings for `shield` and persisted `conditions`, plus sync scope settings for `PC only` or `all combatants`.
+- Inline initiative editing from each combatant card, including double-click editing and automatic tracker reorder.
+- Active combatant action flow to pick a target, apply damage, assign a condition with optional round duration, and append a contextual combat log entry.
+- Shield-aware damage application controls in both direct damage and contextual action flows.
+- ESLint setup for the TypeScript source with a new `npm run lint` script.
+
+### Changed
+- Expanded combatant state to persist shield values and conditions with optional duration metadata.
+- Advancing turns now decrements timed conditions automatically and removes expired effects while logging the expiration.
+- Settings now expose real-time sync, shield behavior, and additional field mappings required by the new combat workflow.
+
+### Fixed
+- Merged default field settings defensively during load so older saved configs receive new mappings without manual reset.
+
 ## [1.0.0] - 2026-05-23
 
 ### Added

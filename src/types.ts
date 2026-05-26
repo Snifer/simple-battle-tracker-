@@ -4,9 +4,11 @@ export interface FieldMapping {
 	initiative: string;
 	hp: string;
 	hp_max: string;
+	shield: string;
 	ac: string;
 	type: string;          // "PC" | "Enemy" | "NPC"
 	extra_fields: string;  // comma-separated extra numeric field names
+	conditions: string;
 }
 
 export interface ConditionEntry {
@@ -14,11 +16,19 @@ export interface ConditionEntry {
 	color: string; // hex color, e.g. "#a855f7". Empty string = use default style.
 }
 
+export interface ActiveCondition {
+	name: string;
+	duration: number | null;
+}
+
 export interface BattleTrackerSettings {
 	language: "es" | "en";
 	fields: FieldMapping;
 	conditions: ConditionEntry[];
 	combatantFolder: string;
+	realtimeSync: boolean;
+	realtimeSyncMode: "pc" | "all";
+	shieldAbsorbsDamage: boolean;
 	logEnabled: boolean;
 	logMode: "new" | "existing" | "ask";
 	logHeader: string;
@@ -32,10 +42,11 @@ export interface Combatant {
 	initiative: number;
 	hp: number;
 	hpMax: number;
+	shield: number;
 	ac: number;
 	combatType: string;
 	extraFields: Record<string, number>;
-	conditions: string[];
+	conditions: ActiveCondition[];
 	notes: string;
 	alive: boolean;
 	file: TFile;

@@ -39,14 +39,15 @@ export default class BattleTrackerPlugin extends Plugin {
 			leaf = existing[0];
 		} else {
 			leaf = workspace.getRightLeaf(false);
-			await leaf!.setViewState({ type: VIEW_TYPE, active: true });
+			if (!leaf) return;
+			await leaf.setViewState({ type: VIEW_TYPE, active: true });
 		}
-		workspace.revealLeaf(leaf!);
+		if (leaf) workspace.revealLeaf(leaf);
 	}
 
 	async loadSettings() {
 		this.settings = Object.assign({}, DEFAULT_SETTINGS, await this.loadData());
-		if (!this.settings.fields) this.settings.fields = DEFAULT_SETTINGS.fields;
+		this.settings.fields = Object.assign({}, DEFAULT_SETTINGS.fields, this.settings.fields ?? {});
 
 		// Migration: convert legacy comma-separated conditions string to ConditionEntry[]
 		if (typeof this.settings.conditions === "string") {

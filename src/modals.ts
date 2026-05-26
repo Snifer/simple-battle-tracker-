@@ -2,17 +2,19 @@ import { App, Modal, Notice, TFile } from "obsidian";
 import BattleTrackerPlugin from "./main";
 import { BattleTrackerView } from "./view";
 import { LOCALIZATION } from "./localization";
-import { ConditionEntry } from "./types";
+import { ActiveCondition, Combatant, ConditionEntry } from "./types";
 
 export class DmgModal extends Modal {
 	name: string;
 	plugin: BattleTrackerPlugin;
-	onConfirm: (val: number, heal: boolean) => void;
+	hasShield: boolean;
+	onConfirm: (val: number, heal: boolean, useShield: boolean) => void;
 
-	constructor(app: App, name: string, plugin: BattleTrackerPlugin, onConfirm: (val: number, heal: boolean) => void) {
+	constructor(app: App, name: string, plugin: BattleTrackerPlugin, hasShield: boolean, onConfirm: (val: number, heal: boolean, useShield: boolean) => void) {
 		super(app);
 		this.name = name;
 		this.plugin = plugin;
+		this.hasShield = hasShield;
 		this.onConfirm = onConfirm;
 	}
 
@@ -25,27 +27,46 @@ export class DmgModal extends Modal {
 		const wrap = contentEl.createDiv("bt-modal-content");
 		const input = wrap.createEl("input", { type: "number", placeholder: t.dmgModalQty });
 		input.min = "0";
+
+		const shieldRow = wrap.createDiv("bt-modal-checkbox-row");
+		const shieldToggle = shieldRow.createEl("input", { type: "checkbox" }) as HTMLInputElement;
+		shieldToggle.checked = this.plugin.settings.shieldAbsorbsDamage;
+		shieldToggle.disabled = !this.hasShield;
+		shieldRow.createEl("label", {
+			text: this.hasShield ? t.dmgModalUseShield : t.dmgModalNoShield,
+		});
+
 		const row = wrap.createDiv("bt-modal-actions");
 		const healBtn = row.createEl("button", { cls: "bt-btn", text: t.dmgModalHeal });
-		healBtn.onclick = () => { this.onConfirm(parseInt(input.value) || 0, true); this.close(); };
+		healBtn.onclick = () => {
+			this.onConfirm(parseInt(input.value) || 0, true, false);
+			this.close();
+		};
+
 		const dmgBtn = row.createEl("button", { cls: "bt-btn bt-btn-danger-soft", text: t.dmgModalDmg });
-		dmgBtn.onclick = () => { this.onConfirm(parseInt(input.value) || 0, false); this.close(); };
+		dmgBtn.onclick = () => {
+			this.onConfirm(parseInt(input.value) || 0, false, this.hasShield && shieldToggle.checked);
+			this.close();
+		};
+
 		setTimeout(() => input.focus(), 50);
 	}
 
-	onClose() { this.contentEl.empty(); }
+	onClose() {
+		this.contentEl.empty();
+	}
 }
 
 export class ConditionModal extends Modal {
 	allConditions: ConditionEntry[];
-	current: string[];
+	current: ActiveCondition[];
 	plugin: BattleTrackerPlugin;
-	onConfirm: (updated: string[]) => void;
+	onConfirm: (updated: ActiveCondition[]) => void;
 
-	constructor(app: App, all: ConditionEntry[], current: string[], plugin: BattleTrackerPlugin, onConfirm: (u: string[]) => void) {
+	constructor(app: App, all: ConditionEntry[], current: ActiveCondition[], plugin: BattleTrackerPlugin, onConfirm: (u: ActiveCondition[]) => void) {
 		super(app);
 		this.allConditions = all;
-		this.current = [...current];
+		this.current = current.map((entry) => ({ ...entry }));
 		this.plugin = plugin;
 		this.onConfirm = onConfirm;
 	}
@@ -56,44 +77,78 @@ export class ConditionModal extends Modal {
 		const t = LOCALIZATION[lang];
 
 		contentEl.createEl("h3", { text: t.condModalTitle });
-		const grid = contentEl.createDiv("bt-cond-grid");
+		const grid = contentEl.createDiv("bt-cond-edit-grid");
+		const selected = new Map(this.current.map((entry) => [entry.name, entry.duration]));
+
 		this.allConditions.forEach((entry) => {
-			const isSelected = this.current.includes(entry.name);
-			const btn = grid.createEl("button", {
-				cls: `bt-cond-toggle${isSelected ? " selected" : ""}`,
+			const row = grid.createDiv("bt-cond-edit-row");
+			const left = row.createDiv("bt-cond-edit-main");
+			const check = left.createEl("input", { type: "checkbox" }) as HTMLInputElement;
+			check.checked = selected.has(entry.name);
+
+			const btn = left.createEl("button", {
+				cls: `bt-cond-toggle${check.checked ? " selected" : ""}`,
 				text: entry.name,
 			});
 
-			// Apply Option A color: text + border tinted, semi-transparent bg
-			const applyColor = (selected: boolean) => {
+			const durationInput = row.createEl("input", {
+				cls: "bt-cond-duration-input",
+				type: "number",
+				placeholder: t.condModalDurationPlaceholder,
+			}) as HTMLInputElement;
+			durationInput.min = "1";
+			const currentDuration = selected.get(entry.name);
+			durationInput.value = currentDuration ? String(currentDuration) : "";
+			durationInput.disabled = !check.checked;
+
+			if (entry.color) {
+				btn.style.color = check.checked ? "#fff" : entry.color;
+				btn.style.borderColor = entry.color;
+				btn.style.backgroundColor = check.checked ? entry.color : entry.color + "22";
+			}
+
+			const updateVisual = () => {
+				btn.classList.toggle("selected", check.checked);
+				durationInput.disabled = !check.checked;
+				if (!check.checked) durationInput.value = "";
 				if (entry.color) {
-					if (selected) {
-						btn.style.backgroundColor = entry.color;
-						btn.style.borderColor = entry.color;
-						btn.style.color = "#fff";
-					} else {
-						btn.style.color = entry.color;
-						btn.style.borderColor = entry.color;
-						btn.style.backgroundColor = entry.color + "22";
-					}
+					btn.style.color = check.checked ? "#fff" : entry.color;
+					btn.style.backgroundColor = check.checked ? entry.color : entry.color + "22";
 				}
 			};
-			applyColor(isSelected);
 
 			btn.onclick = () => {
-				const idx = this.current.indexOf(entry.name);
-				if (idx >= 0) this.current.splice(idx, 1);
-				else this.current.push(entry.name);
-				btn.classList.toggle("selected");
-				applyColor(btn.classList.contains("selected"));
+				check.checked = !check.checked;
+				updateVisual();
 			};
+
+			check.onchange = updateVisual;
 		});
+
 		const row = contentEl.createDiv("bt-modal-actions");
 		const ok = row.createEl("button", { cls: "bt-btn bt-btn-primary", text: t.condModalApply });
-		ok.onclick = () => { this.onConfirm(this.current); this.close(); };
+		ok.onclick = () => {
+			const updated: ActiveCondition[] = [];
+			const rows = Array.from(grid.querySelectorAll(".bt-cond-edit-row"));
+			rows.forEach((rowEl, idx) => {
+				const check = rowEl.querySelector("input[type='checkbox']") as HTMLInputElement | null;
+				const durationInput = rowEl.querySelector(".bt-cond-duration-input") as HTMLInputElement | null;
+				const condition = this.allConditions[idx];
+				if (!check?.checked || !condition) return;
+				const parsedDuration = Number(durationInput?.value);
+				updated.push({
+					name: condition.name,
+					duration: Number.isFinite(parsedDuration) && parsedDuration > 0 ? parsedDuration : null,
+				});
+			});
+			this.onConfirm(updated);
+			this.close();
+		};
 	}
 
-	onClose() { this.contentEl.empty(); }
+	onClose() {
+		this.contentEl.empty();
+	}
 }
 
 export class NoteModal extends Modal {
@@ -119,11 +174,112 @@ export class NoteModal extends Modal {
 		ta.value = this.current;
 		const row = wrap.createDiv("bt-modal-actions");
 		const ok = row.createEl("button", { cls: "bt-btn bt-btn-primary", text: t.noteModalSave });
-		ok.onclick = () => { this.onConfirm(ta.value); this.close(); };
+		ok.onclick = () => {
+			this.onConfirm(ta.value);
+			this.close();
+		};
 		setTimeout(() => ta.focus(), 50);
 	}
 
-	onClose() { this.contentEl.empty(); }
+	onClose() {
+		this.contentEl.empty();
+	}
+}
+
+export class ActionModal extends Modal {
+	attacker: Combatant;
+	targets: Combatant[];
+	conditions: ConditionEntry[];
+	plugin: BattleTrackerPlugin;
+	onConfirm: (payload: {
+		targetId: string;
+		damage: number;
+		useShield: boolean;
+		conditionName: string;
+		conditionDuration: number | null;
+		note: string;
+	}) => void;
+
+	constructor(app: App, attacker: Combatant, targets: Combatant[], conditions: ConditionEntry[], plugin: BattleTrackerPlugin, onConfirm: (payload: {
+		targetId: string;
+		damage: number;
+		useShield: boolean;
+		conditionName: string;
+		conditionDuration: number | null;
+		note: string;
+	}) => void) {
+		super(app);
+		this.attacker = attacker;
+		this.targets = targets;
+		this.conditions = conditions;
+		this.plugin = plugin;
+		this.onConfirm = onConfirm;
+	}
+
+	onOpen() {
+		const { contentEl } = this;
+		const lang = this.plugin.settings.language;
+		const t = LOCALIZATION[lang];
+
+		contentEl.createEl("h3", { text: `${t.actionModalTitle} — ${this.attacker.name}` });
+		const wrap = contentEl.createDiv("bt-modal-content");
+
+		const targetSelect = wrap.createEl("select");
+		this.targets.forEach((target) => {
+			targetSelect.createEl("option", {
+				value: target.id,
+				text: `${target.name} (${t.hp} ${target.hp}/${target.hpMax})`,
+			});
+		});
+
+		const damageInput = wrap.createEl("input", {
+			type: "number",
+			placeholder: t.actionModalDamagePlaceholder,
+		}) as HTMLInputElement;
+		damageInput.min = "0";
+
+		const shieldRow = wrap.createDiv("bt-modal-checkbox-row");
+		const shieldToggle = shieldRow.createEl("input", { type: "checkbox" }) as HTMLInputElement;
+		shieldToggle.checked = this.plugin.settings.shieldAbsorbsDamage;
+		shieldRow.createEl("label", { text: t.actionModalShieldLabel });
+
+		const conditionSelect = wrap.createEl("select");
+		conditionSelect.createEl("option", { value: "", text: t.actionModalNoCondition });
+		this.conditions.forEach((entry) => {
+			conditionSelect.createEl("option", { value: entry.name, text: entry.name });
+		});
+
+		const durationInput = wrap.createEl("input", {
+			type: "number",
+			placeholder: t.condModalDurationPlaceholder,
+		}) as HTMLInputElement;
+		durationInput.min = "1";
+
+		const noteInput = wrap.createEl("textarea", {
+			placeholder: t.actionModalNotePlaceholder,
+		}) as HTMLTextAreaElement;
+
+		const row = wrap.createDiv("bt-modal-actions");
+		const ok = row.createEl("button", { cls: "bt-btn bt-btn-primary", text: t.actionModalApply });
+		ok.onclick = () => {
+			const parsedDuration = Number(durationInput.value);
+			this.onConfirm({
+				targetId: targetSelect.value,
+				damage: parseInt(damageInput.value) || 0,
+				useShield: shieldToggle.checked,
+				conditionName: conditionSelect.value,
+				conditionDuration: Number.isFinite(parsedDuration) && parsedDuration > 0 ? parsedDuration : null,
+				note: noteInput.value.trim(),
+			});
+			this.close();
+		};
+
+		setTimeout(() => targetSelect.focus(), 50);
+	}
+
+	onClose() {
+		this.contentEl.empty();
+	}
 }
 
 export class PickCombatantsModal extends Modal {
@@ -168,7 +324,10 @@ export class PickCombatantsModal extends Modal {
 						else this.selected.delete(file.path);
 					};
 					const lbl = item.createEl("label", { text: file.basename });
-					lbl.onclick = () => { cb.checked = !cb.checked; cb.dispatchEvent(new Event("change")); };
+					lbl.onclick = () => {
+						cb.checked = !cb.checked;
+						cb.dispatchEvent(new Event("change"));
+					};
 				});
 		};
 
@@ -181,7 +340,10 @@ export class PickCombatantsModal extends Modal {
 		const ok = row.createEl("button", { cls: "bt-btn bt-btn-primary", text: t.pickModalLoad });
 		ok.onclick = () => {
 			const picked = files.filter((f) => this.selected.has(f.path));
-			if (!picked.length) { new Notice(t.pickModalSelectMin); return; }
+			if (!picked.length) {
+				new Notice(t.pickModalSelectMin);
+				return;
+			}
 			this.onConfirm(picked);
 			this.close();
 		};
@@ -189,7 +351,9 @@ export class PickCombatantsModal extends Modal {
 		setTimeout(() => searchInput.focus(), 50);
 	}
 
-	onClose() { this.contentEl.empty(); }
+	onClose() {
+		this.contentEl.empty();
+	}
 }
 
 export class LogSetupModal extends Modal {
@@ -212,10 +376,8 @@ export class LogSetupModal extends Modal {
 		contentEl.createEl("h3", { text: t.logConfigureTitle });
 		contentEl.createEl("p", { text: t.logHeadingDesc, cls: "setting-item-description" });
 
-		// Actions container
 		const container = contentEl.createDiv("bt-modal-content");
 
-		// Button to create a new file
 		const newFileBtn = container.createEl("button", { cls: "bt-btn bt-btn-primary", text: `📝 ${t.logCreateNewFile}` });
 		newFileBtn.style.width = "100%";
 		newFileBtn.style.padding = "8px";
@@ -232,7 +394,6 @@ export class LogSetupModal extends Modal {
 			}
 		};
 
-		// Divider
 		const divider = container.createDiv();
 		divider.style.textAlign = "center";
 		divider.style.margin = "10px 0";
@@ -240,7 +401,6 @@ export class LogSetupModal extends Modal {
 		divider.style.fontSize = "11px";
 		divider.setText("─── " + (lang === "es" ? "O SELECCIONAR EXISTENTE" : "OR SELECT EXISTING") + " ───");
 
-		// File selector
 		const searchInput = container.createEl("input", {
 			type: "text",
 			placeholder: t.pickModalSearch,
@@ -256,7 +416,7 @@ export class LogSetupModal extends Modal {
 			list.empty();
 			files
 				.filter((f) => !filter || f.basename.toLowerCase().includes(filter.toLowerCase()))
-				.slice(0, 50) // Limit display for performance
+				.slice(0, 50)
 				.forEach((file) => {
 					const item = list.createDiv("bt-pick-item");
 					item.style.padding = "6px 8px";
@@ -272,10 +432,9 @@ export class LogSetupModal extends Modal {
 		renderList("");
 		searchInput.oninput = () => renderList(searchInput.value);
 
-		// Modal footer actions
 		const row = contentEl.createDiv("bt-modal-actions");
 		row.style.marginTop = "15px";
-		
+
 		const cancelBtn = row.createEl("button", { cls: "bt-btn", text: t.logButtonNoLog });
 		cancelBtn.onclick = () => {
 			this.onChoose(null);

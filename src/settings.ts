@@ -36,12 +36,17 @@ export const DEFAULT_SETTINGS: BattleTrackerSettings = {
 		initiative: "initiative",
 		hp: "hp",
 		hp_max: "hp_max",
+		shield: "shield",
 		ac: "ac",
 		type: "type",
 		extra_fields: "mp,stamina",
+		conditions: "conditions",
 	},
 	conditions: DEFAULT_CONDITIONS_ES,
 	combatantFolder: "",
+	realtimeSync: false,
+	realtimeSyncMode: "pc",
+	shieldAbsorbsDamage: true,
 	logEnabled: true,
 	logMode: "ask",
 	logHeader: "## Registro de Combate",
@@ -135,6 +140,11 @@ export class BattleTrackerSettingTab extends PluginSettingTab {
 			.setName(t.settingsHpMaxName)
 			.setDesc(t.settingsHpMaxDesc)
 			.addText((text) => text.setValue(f.hp_max).onChange(async (v) => { f.hp_max = v; await this.plugin.saveSettings(); }));
+
+		new Setting(containerEl)
+			.setName(t.settingsShieldName)
+			.setDesc(t.settingsShieldDesc)
+			.addText((text) => text.setValue(f.shield).onChange(async (v) => { f.shield = v; await this.plugin.saveSettings(); }));
 			
 		new Setting(containerEl)
 			.setName(t.settingsAcName)
@@ -150,6 +160,53 @@ export class BattleTrackerSettingTab extends PluginSettingTab {
 			.setName(t.settingsExtraName)
 			.setDesc(t.settingsExtraDesc)
 			.addText((text) => text.setValue(f.extra_fields).onChange(async (v) => { f.extra_fields = v; await this.plugin.saveSettings(); }));
+
+		new Setting(containerEl)
+			.setName(t.settingsConditionsFieldName)
+			.setDesc(t.settingsConditionsFieldDesc)
+			.addText((text) => text.setValue(f.conditions).onChange(async (v) => { f.conditions = v; await this.plugin.saveSettings(); }));
+
+		containerEl.createEl("h3", { text: t.settingsRealtimeTitle });
+		new Setting(containerEl)
+			.setName(t.settingsRealtimeSyncName)
+			.setDesc(t.settingsRealtimeSyncDesc)
+			.addToggle((toggle) =>
+				toggle
+					.setValue(this.plugin.settings.realtimeSync)
+					.onChange(async (v) => {
+						this.plugin.settings.realtimeSync = v;
+						await this.plugin.saveSettings();
+						this.display();
+					})
+			);
+
+		if (this.plugin.settings.realtimeSync) {
+			new Setting(containerEl)
+				.setName(t.settingsRealtimeModeName)
+				.setDesc(t.settingsRealtimeModeDesc)
+				.addDropdown((dropdown) =>
+					dropdown
+						.addOption("pc", t.settingsRealtimeModePc)
+						.addOption("all", t.settingsRealtimeModeAll)
+						.setValue(this.plugin.settings.realtimeSyncMode)
+						.onChange(async (value: "pc" | "all") => {
+							this.plugin.settings.realtimeSyncMode = value;
+							await this.plugin.saveSettings();
+						})
+				);
+		}
+
+		new Setting(containerEl)
+			.setName(t.settingsShieldAbsorbName)
+			.setDesc(t.settingsShieldAbsorbDesc)
+			.addToggle((toggle) =>
+				toggle
+					.setValue(this.plugin.settings.shieldAbsorbsDamage)
+					.onChange(async (v) => {
+						this.plugin.settings.shieldAbsorbsDamage = v;
+						await this.plugin.saveSettings();
+					})
+			);
 
 		// ── Conditions / States ───────────────────────────────────────────────
 		containerEl.createEl("h3", { text: t.settingsCondTitle });

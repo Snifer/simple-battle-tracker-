@@ -201,6 +201,7 @@
 	display: flex;
 	flex-direction: column;
 	min-width: 0;
+	flex: 1;
 }
 
 .bt-name {
@@ -215,6 +216,30 @@
 .bt-sub {
 	font-size: 11px;
 	color: var(--text-muted);
+}
+
+.bt-init-edit-row {
+	display: flex;
+	align-items: center;
+	gap: 8px;
+	flex-wrap: wrap;
+}
+
+.bt-sub-shield {
+	font-size: 10px;
+	padding: 1px 6px;
+	border-radius: 99px;
+	background: var(--background-secondary);
+	border: 1px solid var(--background-modifier-border);
+}
+
+.bt-init-edit-input {
+	width: 72px;
+	padding: 2px 6px;
+	border: 1px solid var(--background-modifier-border);
+	border-radius: 4px;
+	background: var(--background-primary);
+	color: var(--text-normal);
 }
 
 /* Type badge */
@@ -368,7 +393,8 @@
 }
 
 .bt-modal-content input,
-.bt-modal-content textarea {
+.bt-modal-content textarea,
+.bt-modal-content select {
 	width: 100%;
 	padding: 6px 8px;
 	border: 1px solid var(--background-modifier-border);
@@ -383,11 +409,35 @@
 	resize: vertical;
 }
 
-/* Condition toggle grid (ConditionModal) */
-.bt-cond-grid {
+.bt-modal-checkbox-row {
 	display: flex;
-	gap: 6px;
-	flex-wrap: wrap;
+	align-items: center;
+	gap: 8px;
+	font-size: 12px;
+	color: var(--text-muted);
+}
+
+.bt-cond-edit-grid {
+	display: flex;
+	flex-direction: column;
+	gap: 8px;
+}
+
+.bt-cond-edit-row {
+	display: flex;
+	align-items: center;
+	gap: 8px;
+}
+
+.bt-cond-edit-main {
+	display: flex;
+	align-items: center;
+	gap: 8px;
+	flex: 1;
+}
+
+.bt-cond-duration-input {
+	max-width: 140px;
 }
 
 .bt-cond-toggle {
